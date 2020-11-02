@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'ca.ciccc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    implementation 'commons-cli:commons-cli:1.4'
+    implementation 'commons-lang:commons-lang:2.6'
+    implementation 'commons-collections:commons-collections:3.2.2'
+    implementation 'com.google.guava:guava:30.0-jre'
+}
+
+test {
+    useJUnitPlatform()
+}
+
