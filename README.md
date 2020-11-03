@@ -30,7 +30,9 @@ Class / Interface
 - run()
 
 ### MacroMovement implement Movement
-- ArryList<Movement> events
+- controls the history of players' movement.
+
+- ArrayList<Movement> events
 - run();
 - push();
 - undo();
@@ -43,20 +45,20 @@ Class / Interface
 - movable()
 
 ### Board
+- controls the position(location 0...63) of each piece.
 - notify()
-- どのマスにどのピースがある/ないかを管理
 
 ### Position
 
 ### Player
-- ピースの移動を実行
-- 何個ピースを持っているかを管理
+- executes the movement of each piece.
+- controls how many pieces each player has.
 
 ### Game
-- どちらのPlayerか管理
+- controls the player's turn (which player is playing now)
 
 ### Input
-- ユーザーの入力を管理
+- controls players' input
 
 ### Validation
 
