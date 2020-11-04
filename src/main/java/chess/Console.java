@@ -1,10 +1,12 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Console {
 
   void cellNumber() {
     System.out.println("-------------------------");
-    System.out.println("| 1| 2| 3| 4| 5| 6| 7| 8|");
     System.out.println("|11|12|13|14|15|16|17|18|");
     System.out.println("|21|22|23|24|25|26|27|28|");
     System.out.println("|31|32|33|34|35|36|37|38|");
@@ -99,5 +101,9 @@ public class Console {
         Symbol.WHITE_ROOK
     );
     System.out.println("-------------------------");
+  }
+
+  void positions(ArrayList<Integer> positions) {
+    System.out.println(Arrays.deepToString(positions.toArray()));
   }
 }

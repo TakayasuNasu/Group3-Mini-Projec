@@ -16,10 +16,4 @@ class GameTest {
     this.game = new Game();
   }
 
-  @ParameterizedTest
-  @ValueSource(ints = {1, 1, 1})
-  @DisplayName("Should check all items in the list")
-  void shouldHoge(int value) {
-    Assertions.assertEquals(value, this.game.hoge());
-  }
 }
