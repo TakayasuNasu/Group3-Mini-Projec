@@ -4,9 +4,9 @@ Group3 Mini Project
 Member
 ---
 
-- Takayuki
+- Taka(Takayuki)
 - Miriam
-- T.K(Takayasu)
+- Yasu(Takayasu)
 
 System Design
 ---
@@ -45,10 +45,8 @@ Class / Interface
 - movable()
 
 ### Board
-- controls the position(location 0...63) of each piece.
+- controls the position(location 0...88) of each piece.
 - notify()
-
-### Position
 
 ### Player
 - executes the movement of each piece.
@@ -61,9 +59,6 @@ Class / Interface
 - controls players' input
 
 ### Validation
-
-
-### Error
 
 ### Console
 
