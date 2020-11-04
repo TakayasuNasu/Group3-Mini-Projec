@@ -3,6 +3,7 @@ package chess.command;
 import chess.Board;
 import chess.Validation;
 import chess.pieces.Piece;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -62,7 +63,7 @@ public class QueenMovement implements Movement {
     // Upper right
     for (int i = 1; i < 8; i++) {
       int dest = this.piece.position - (10 * i) + i;
-      if (new ArrayList<>(Arrays.asList(19, 29, 39, 49, 59, 69, 79)).contains(dest)) {
+      if (Lists.newArrayList(19, 29, 39, 49, 59, 69, 79).contains(dest)) {
         break;
       }
       if (this.valid.canMove(dest)) {
@@ -72,7 +73,7 @@ public class QueenMovement implements Movement {
     // Upper left
     for (int i = 1; i < 8; i++) {
       int dest = this.piece.position - (10 * i) - i;
-      if (new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50, 60, 70)).contains(dest)) {
+      if (Lists.newArrayList(10, 20, 30, 40, 50, 60, 70).contains(dest)) {
         break;
       }
       if (this.valid.canMove(dest)) {
@@ -82,7 +83,7 @@ public class QueenMovement implements Movement {
     // Lower right
     for (int i = 1; i < 8; i++) {
       int dest = this.piece.position + (10 * i) + i;
-      if (new ArrayList<>(Arrays.asList(19, 29, 39, 49, 59, 69, 79)).contains(dest)) {
+      if (Lists.newArrayList(19, 29, 39, 49, 59, 69, 79).contains(dest)) {
         break;
       }
       if (this.valid.canMove(dest)) {
@@ -92,7 +93,7 @@ public class QueenMovement implements Movement {
     // Lower left
     for (int i = 1; i < 8; i++) {
       int dest = this.piece.position + (10 * i) - i;
-      if (new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50, 60, 70)).contains(dest)) {
+      if (Lists.newArrayList(10, 20, 30, 40, 50, 60, 70).contains(dest)) {
         break;
       }
       if (this.valid.canMove(dest)) {

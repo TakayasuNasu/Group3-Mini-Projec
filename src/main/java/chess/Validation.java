@@ -1,5 +1,6 @@
 package chess;
 
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,9 +13,8 @@ public class Validation {
     if (position > 88) {
       return false;
     }
-    if (new ArrayList<>(
-        Arrays.asList(19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80)
-    ).contains(position)) {
+    if (Lists.newArrayList(19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80)
+        .contains(position)) {
       return false;
     }
     return true;
