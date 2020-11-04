@@ -4,9 +4,9 @@ Group3 Mini Project
 Member
 ---
 
-- Takayuki
+- Taka(Takayuki)
 - Miriam
-- T.K(Takayasu)
+- Yasu(Takayasu)
 
 System Design
 ---
@@ -30,7 +30,7 @@ Class / Interface
 - run()
 
 ### MacroMovement implement Movement
-- ArryList<Movement> events
+- ArryList<Movement> movements
 - run();
 - push();
 - undo();
@@ -46,8 +46,6 @@ Class / Interface
 - notify()
 - どのマスにどのピースがある/ないかを管理
 
-### Position
-
 ### Player
 - ピースの移動を実行
 - 何個ピースを持っているかを管理
@@ -59,9 +57,6 @@ Class / Interface
 - ユーザーの入力を管理
 
 ### Validation
-
-
-### Error
 
 ### Console
 
