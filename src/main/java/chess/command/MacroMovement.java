@@ -1,6 +1,7 @@
 package chess.command;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 public class MacroMovement implements Movement {
 
@@ -11,6 +12,11 @@ public class MacroMovement implements Movement {
     for (Movement m : this.movements) {
       m.run();
     }
+  }
+
+  @Override
+  public ArrayList<Integer> where() {
+    return null;
   }
 
   public void push(Movement movement) {

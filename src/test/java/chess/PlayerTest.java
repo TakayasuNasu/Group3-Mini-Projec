@@ -2,6 +2,7 @@ package chess;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import chess.pieces.Piece;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,8 +18,7 @@ class PlayerTest {
 
   @Test
   void chose() throws Exception {
-    int result = this.player.chose(1);
-    Assertions.assertEquals(2, result);
+    Piece piece = this.player.chose(1);
   }
 
 }
