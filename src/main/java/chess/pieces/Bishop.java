@@ -13,4 +13,9 @@ public class Bishop extends Piece {
     super.isWhite = isWhite;
     super.symbol = super.isWhite ? Symbol.WHITE_BISHOP : Symbol.BLACK_BISHOP;
   }
+
+  public Bishop(int position) {
+    super.position = position;
+    super.symbol = super.isWhite ? Symbol.WHITE_BISHOP : Symbol.BLACK_BISHOP;
+  }
 }

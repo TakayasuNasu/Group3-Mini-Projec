@@ -13,4 +13,9 @@ public class Knight extends Piece {
     super.isWhite = isWhite;
     super.symbol = super.isWhite ? Symbol.WHITE_KNIGHT : Symbol.BLACK_KNIGHT;
   }
+
+  public Knight(int position) {
+    super.position = position;
+    super.symbol = super.isWhite ? Symbol.WHITE_KNIGHT : Symbol.BLACK_KNIGHT;
+  }
 }

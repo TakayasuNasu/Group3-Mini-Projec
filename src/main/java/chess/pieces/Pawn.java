@@ -14,4 +14,9 @@ public class Pawn extends Piece {
     super.symbol = super.isWhite ? Symbol.WHITE_PAWN : Symbol.BLACK_PAWN;
   }
 
+  public Pawn(int position) {
+    super.position = position;
+    super.symbol = super.isWhite ? Symbol.WHITE_PAWN : Symbol.BLACK_PAWN;
+  }
+
 }

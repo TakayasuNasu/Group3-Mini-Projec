@@ -13,4 +13,9 @@ public class King extends Piece {
     super.isWhite = isWhite;
     super.symbol = super.isWhite ? Symbol.WHITE_KING : Symbol.BLACK_KING;
   }
+
+  public King(int position) {
+    super.position = position;
+    super.symbol = super.isWhite ? Symbol.WHITE_KING : Symbol.BLACK_KING;
+  }
 }

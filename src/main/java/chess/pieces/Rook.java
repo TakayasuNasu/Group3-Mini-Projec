@@ -13,4 +13,9 @@ public class Rook extends Piece {
     super.isWhite = isWhite;
     super.symbol = super.isWhite ? Symbol.WHITE_ROOK : Symbol.BLACK_ROOK;
   }
+
+  public Rook(int position) {
+    super.position = position;
+    super.symbol = super.isWhite ? Symbol.WHITE_ROOK : Symbol.BLACK_ROOK;
+  }
 }
