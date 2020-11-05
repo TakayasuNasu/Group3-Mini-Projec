@@ -8,10 +8,9 @@ public class King extends Piece {
     super.position = 1;
   }
 
-  public King(int position, boolean isWhite, boolean isGone) {
+  public King(int position, boolean isWhite) {
     super.position = position;
     super.isWhite = isWhite;
-    super.isGone = isGone;
     super.symbol = super.isWhite ? Symbol.WHITE_KING : Symbol.BLACK_KING;
   }
 }
