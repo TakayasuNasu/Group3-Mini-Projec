@@ -8,10 +8,9 @@ public class Pawn extends Piece {
     super.position = 2;
   }
 
-  public Pawn(int position, boolean isWhite, boolean isGone) {
+  public Pawn(int position, boolean isWhite) {
     super.position = position;
     super.isWhite = isWhite;
-    super.isGone = isGone;
     super.symbol = super.isWhite ? Symbol.WHITE_PAWN : Symbol.BLACK_PAWN;
   }
 

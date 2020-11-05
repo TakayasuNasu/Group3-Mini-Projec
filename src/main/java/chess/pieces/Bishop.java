@@ -8,10 +8,9 @@ public class Bishop extends Piece {
     super.position = 1;
   }
 
-  public Bishop(int position, boolean isWhite, boolean isGone) {
+  public Bishop(int position, boolean isWhite) {
     super.position = position;
     super.isWhite = isWhite;
-    super.isGone = isGone;
     super.symbol = super.isWhite ? Symbol.WHITE_BISHOP : Symbol.BLACK_BISHOP;
   }
 }
