@@ -18,7 +18,7 @@ class QueenMovementTest {
     Board board = new Board();
     Queen queen = new Queen();
     queen.position = 41;
-    this.movement = new QueenMovement(1, queen, board);
+    this.movement = new QueenMovement(queen, board);
   }
 
   @Test

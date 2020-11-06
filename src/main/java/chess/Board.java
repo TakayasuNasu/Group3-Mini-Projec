@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 
 public class Board {
 
-  King whiteKing = new King(84, true);
-  Queen whiteQueen = new Queen(85, true);
+  King whiteKing = new King(85, true);
+  Queen whiteQueen = new Queen(84, true);
   Bishop whiteBishop1 = new Bishop(83, true);
   Bishop whiteBishop2 = new Bishop(86, true);
   Rook whiteRook1 = new Rook(81, true);
@@ -83,12 +83,12 @@ public class Board {
       blackPawn8
   ));
 
-  public Piece choosed(int position) throws Exception {
+  public Piece chosen(int position) {
     List<Piece> list = this.pieces.stream()
         .filter(piece -> piece.position == position)
         .collect(Collectors.toList());
     if (list.size() < 1) {
-      throw new Exception("Exception message");
+      return null;
     }
     return list.get(0);
   }

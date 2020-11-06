@@ -1,11 +1,13 @@
 package chess;
 
+import chess.pieces.Piece;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Console {
 
-  void cellNumber() {
+  static void cellNumber() {
     System.out.println("-------------------------");
     System.out.println("|11|12|13|14|15|16|17|18|");
     System.out.println("|21|22|23|24|25|26|27|28|");
@@ -18,92 +20,50 @@ public class Console {
     System.out.println("-------------------------");
   }
 
-  void showBoard() {
-    System.out.println("-------------------------");
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.BLACK_ROOK,
-        Symbol.BLACK_KNIGHT,
-        Symbol.BLACK_BISHOP,
-        Symbol.BLACK_QUEEN,
-        Symbol.BLACK_KING,
-        Symbol.BLACK_BISHOP,
-        Symbol.BLACK_KNIGHT,
-        Symbol.BLACK_ROOK
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN,
-        Symbol.BLACK_PAWN
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY,
-        Symbol.EMPTY
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN,
-        Symbol.WHITE_PAWN
-    );
-    System.out.printf("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
-        Symbol.WHITE_ROOK,
-        Symbol.WHITE_KNIGHT,
-        Symbol.WHITE_BISHOP,
-        Symbol.WHITE_QUEEN,
-        Symbol.WHITE_KING,
-        Symbol.WHITE_BISHOP,
-        Symbol.WHITE_KNIGHT,
-        Symbol.WHITE_ROOK
-    );
-    System.out.println("-------------------------");
+  static void showBoard(Board bord) {
+    StringBuilder sb = new StringBuilder("-------------------------\n");
+    for (int i = 11; i < 89; i++) {
+      if (Lists.newArrayList(19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80).contains(i)) {
+        continue;
+      }
+      sb.append("|");
+      Piece p = bord.chosen(i);
+      if (p != null) {
+        sb.append(p.isGone ? Symbol.EMPTY : p.symbol);
+      } else {
+        sb.append(Symbol.EMPTY);
+      }
+      if (Lists.newArrayList(18, 28, 38, 48, 58, 68, 78, 88).contains(i)) {
+        sb.append("|\n");
+      }
+    }
+    sb.append("-------------------------\n");
+    System.out.println(sb.toString());
   }
 
-  void positions(ArrayList<Integer> positions) {
-    System.out.println(Arrays.deepToString(positions.toArray()));
+  static void beforeCall() {
+    System.out.print("Enter UCI (type 'help' for 'help'): ");
+  }
+
+  static void positions(ArrayList<Integer> positions) {
+    System.out
+        .println("You can choose destination from " + Arrays.deepToString(positions.toArray()));
+  }
+
+  static void pieceAndPosition(Piece piece, int position) {
+    System.out.printf("you chose %s and that's position is %d\n", piece.symbol, position);
+  }
+
+  static void error(int code) {
+    switch (code) {
+      case 1:
+        System.out.println("Invalid chosen piece!");
+        break;
+      case 2:
+        System.out.println("Invalid decided piece!");
+        break;
+      default:
+        System.out.println("");
+    }
   }
 }

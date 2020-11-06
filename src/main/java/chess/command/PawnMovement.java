@@ -13,4 +13,9 @@ public class PawnMovement implements Movement {
   public ArrayList<Integer> where() {
     return null;
   }
+
+  @Override
+  public void setDestination(int dest) {
+
+  }
 }

@@ -15,11 +15,7 @@ public class QueenMovement implements Movement {
   Board board;
   Validation valid = new Validation();
 
-  public QueenMovement() {
-  }
-
-  public QueenMovement(int dest, Piece piece, Board board) {
-    this.dest = dest;
+  public QueenMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
   }
@@ -34,20 +30,20 @@ public class QueenMovement implements Movement {
     ArrayList<Integer> positions = new ArrayList<>();
     // Upper
     for (int i = 1; i < 8; i++) {
-      if (this.valid.canMove(this.piece.position - (10 * i))) {
+      if (this.valid.canMove(this.piece, this.board, this.piece.position - (10 * i))) {
         positions.add(this.piece.position - (10 * i));
       }
     }
     // Lower
     for (int i = 1; i < 8; i++) {
-      if (this.valid.canMove(this.piece.position + (10 * i))) {
+      if (this.valid.canMove(this.piece, this.board, this.piece.position + (10 * i))) {
         positions.add(this.piece.position + (10 * i));
       }
     }
     // Right
     for (int i = 1; i < 8; i++) {
       int dest = this.piece.position + i;
-      if (this.valid.canMove(dest)
+      if (this.valid.canMove(this.piece, this.board, dest)
           && dest < (this.piece.position % 10 + 1) * 10) {
         positions.add(dest);
       }
@@ -55,7 +51,7 @@ public class QueenMovement implements Movement {
     // Left
     for (int i = 1; i < 8; i++) {
       int dest = this.piece.position - i;
-      if (this.valid.canMove(dest)
+      if (this.valid.canMove(this.piece, this.board, dest)
           && dest > (this.piece.position % 10 - 1) * 10) {
         positions.add(dest);
       }
@@ -101,5 +97,10 @@ public class QueenMovement implements Movement {
       }
     }
     return new ArrayList<>(new LinkedHashSet<>(positions));
+  }
+
+  @Override
+  public void setDestination(int dest) {
+    this.dest = dest;
   }
 }

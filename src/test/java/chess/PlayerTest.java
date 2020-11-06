@@ -17,8 +17,8 @@ class PlayerTest {
   }
 
   @Test
-  void chose() throws Exception {
-    Piece piece = this.player.chose(1);
+  void choose() throws Exception {
+    Piece piece = this.player.choose(1);
   }
 
 }

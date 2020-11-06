@@ -21,4 +21,18 @@ class ValidationTest {
   void canMove(int position) {
     Assertions.assertTrue(!this.valid.canMove(position));
   }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"help", "resign", "11", "24", "77", "88"})
+  void playerCall(String input) {
+    Board board = new Board();
+    Assertions.assertTrue(this.valid.playerCall(input, board));
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"hoge", "fuga", "5", "19", "31", "90"})
+  void notPlayerCall(String input) {
+    Board board = new Board();
+    Assertions.assertTrue(!this.valid.playerCall(input, board));
+  }
 }
