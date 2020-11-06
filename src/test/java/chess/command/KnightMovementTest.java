@@ -3,23 +3,23 @@ package chess.command;
 import static org.junit.jupiter.api.Assertions.*;
 
 import chess.Board;
-import chess.pieces.Queen;
+import chess.pieces.Knight;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class QueenMovementTest {
+class KnightMovementTest {
 
-  QueenMovement movement;
-  int testPosition = 56;
+  KnightMovement movement;
+  int testPosition = 32;// set the position you want to check
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
-    Queen queen = new Queen();
-    queen.position = testPosition;
-    this.movement = new QueenMovement(1, queen, board);
+    Knight Knight = new Knight();
+    Knight.position = testPosition;
+    this.movement = new KnightMovement(1, Knight, board);
   }
 
   @Test
