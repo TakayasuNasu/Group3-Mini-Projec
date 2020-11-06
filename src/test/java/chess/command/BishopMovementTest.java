@@ -3,29 +3,31 @@ package chess.command;
 import static org.junit.jupiter.api.Assertions.*;
 
 import chess.Board;
-import chess.pieces.Queen;
+import chess.pieces.Bishop;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class QueenMovementTest {
+class BishopMovementTest {
 
-  QueenMovement movement;
-  int testPosition = 56;
+  BishopMovement movement;
+  int testPosition = 17; // set the position you want to check
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
-    Queen queen = new Queen();
-    queen.position = testPosition;
-    this.movement = new QueenMovement(1, queen, board);
+    Bishop bishop = new Bishop();
+    bishop.position = testPosition;
+    this.movement = new BishopMovement(1, bishop, board);
   }
 
   @Test
   void where() {
+
     ArrayList<Integer> positions = this.movement.where();
     System.out.println("Test position is: "+testPosition);
+
     System.out.print("The positions where the piece can move: ");
     System.out.println(Arrays.deepToString(positions.toArray()));
 

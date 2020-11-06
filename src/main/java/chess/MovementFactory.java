@@ -15,10 +15,10 @@ public class MovementFactory {
         this.movement = new QueenMovement(dest, piece, boare);
         break;
       case "Pawn":
-        this.movement = new PawnMovement();
+        this.movement = new PawnMovement(dest, piece, boare);
         break;
       default:
-        this.movement = new QueenMovement();
+        this.movement = new QueenMovement(dest, piece, boare);
     }
     return this.movement;
   }
