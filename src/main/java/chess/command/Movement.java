@@ -8,4 +8,6 @@ public interface Movement {
 
   ArrayList<Integer> where();
 
+  void setDestination(int dest);
+
 }

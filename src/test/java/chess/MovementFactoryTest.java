@@ -25,11 +25,11 @@ class MovementFactoryTest {
   @Test
   void create() {
     Queen queen = new Queen();
-    Movement qm = this.factory.create(2, queen, this.board);
+    Movement qm = this.factory.create(queen, this.board);
     Assertions.assertEquals("QueenMovement", qm.getClass().getSimpleName());
 
     Pawn pawn = new Pawn();
-    Movement pm = this.factory.create(3, pawn, this.board);
+    Movement pm = this.factory.create(pawn, this.board);
     Assertions.assertEquals("PawnMovement", pm.getClass().getSimpleName());
 
   }

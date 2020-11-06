@@ -16,6 +16,6 @@ class BoardTest {
 
   @Test
   void choosed() throws Exception {
-    this.board.choosed(3);
+    this.board.chosen(3);
   }
 }

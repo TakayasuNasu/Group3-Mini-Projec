@@ -14,4 +14,9 @@ public class Queen extends Piece {
     super.symbol = super.isWhite ? Symbol.WHITE_QUEEN : Symbol.BLACK_QUEEN;
   }
 
+  public Queen(int position) {
+    super.position = position;
+    super.symbol = super.isWhite ? Symbol.WHITE_QUEEN : Symbol.BLACK_QUEEN;
+  }
+
 }

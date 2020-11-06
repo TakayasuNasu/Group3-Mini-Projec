@@ -9,16 +9,16 @@ public class MovementFactory {
 
   public Movement movement;
 
-  public Movement create(int dest, Piece piece, Board boare) {
+  public Movement create(Piece piece, Board board) {
     switch (piece.getClass().getSimpleName()) {
       case "Queen":
-        this.movement = new QueenMovement(dest, piece, boare);
+        this.movement = new QueenMovement(piece, board);
         break;
       case "Pawn":
-        this.movement = new PawnMovement(dest, piece, boare);
+        this.movement = new PawnMovement(piece, board);
         break;
       default:
-        this.movement = new QueenMovement(dest, piece, boare);
+        this.movement = new QueenMovement(piece, board);
     }
     return this.movement;
   }

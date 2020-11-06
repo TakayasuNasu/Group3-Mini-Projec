@@ -19,6 +19,11 @@ public class MacroMovement implements Movement {
     return null;
   }
 
+  @Override
+  public void setDestination(int dest) {
+
+  }
+
   public void push(Movement movement) {
     if (movement != this) {
       this.movements.push(movement);
