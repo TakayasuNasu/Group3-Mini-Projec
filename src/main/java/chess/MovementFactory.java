@@ -15,7 +15,7 @@ public class MovementFactory {
         this.movement = new QueenMovement(piece, board);
         break;
       case "Pawn":
-        this.movement = new PawnMovement();
+        this.movement = new PawnMovement(piece, board);
         break;
       default:
         this.movement = new QueenMovement(piece, board);
