@@ -53,9 +53,6 @@ public class Validation {
     if (p == null) {
       return false;
     }
-    if (!p.isGone) {
-      return false;
-    }
     return true;
   }
 

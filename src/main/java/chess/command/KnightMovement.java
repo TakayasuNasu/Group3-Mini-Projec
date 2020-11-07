@@ -14,8 +14,7 @@ public class KnightMovement implements Movement {
   Validation valid = new Validation();// Create a validation object so that we can use validation method "canMove"
 
   // Designated constructor
-  public KnightMovement(int dest, Piece piece, Board board) {
-    this.dest = dest;
+  public KnightMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
   }
@@ -92,7 +91,7 @@ public class KnightMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 }
 

@@ -15,8 +15,7 @@ public class KingMovement implements Movement {
 
 
   // Designated constructor
-  public KingMovement(int dest, Piece piece, Board board) {
-    this.dest = dest;
+  public KingMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
   }
@@ -89,6 +88,6 @@ public class KingMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 }
