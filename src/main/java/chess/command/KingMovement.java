@@ -16,15 +16,12 @@ public class KingMovement implements Movement {
 
 
   //Constructor
+
   public KingMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
   }
 
-  public KingMovement(int dest, Piece piece, Board board) {
-    this(piece, board);
-    this.setDestination(dest);
-  }
 
   /**
    * Move the piece to where the player has decided.
@@ -66,7 +63,7 @@ public class KingMovement implements Movement {
     candidates.add( 1 + 10);
 
     for (int pos: candidates) {
-      if (this.valid.canMove(this.piece.position + pos)) {
+      if (this.valid.canMove(piece,board, this.piece.position + pos)) {
         positions.add(this.piece.position + pos);
       }
     }

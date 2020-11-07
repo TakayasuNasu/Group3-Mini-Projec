@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class QueenMovementTest {
 
   QueenMovement movement;
-  int testPosition = 65;
+  int testPosition = 51;
 
   @BeforeEach
   void setUp() {

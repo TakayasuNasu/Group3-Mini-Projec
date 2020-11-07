@@ -25,7 +25,7 @@ class KnightMovementTest {
   @Test
   void where() {
     ArrayList<Integer> positions = this.movement.where();
-    System.out.println("Test position is: "+testPosition);
+    System.out.println("Test position is: " + testPosition);
     System.out.print("The positions where the piece can move: ");
     System.out.println(Arrays.deepToString(positions.toArray()));
 
@@ -42,8 +42,8 @@ class KnightMovementTest {
      * "  " == where the piece can move
      * "!!" == the position of piece itself
      */
-    String s = s1+s2+s3+s4+s5+s6+s7+s8;
-    for (Integer i: positions) {
+    String s = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8;
+    for (Integer i : positions) {
       s = s.replace(Integer.toString(i), "  ");
     }
     s = s.replace(Integer.toString(testPosition), "!!");

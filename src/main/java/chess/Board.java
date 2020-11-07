@@ -96,12 +96,11 @@ public class Board {
    */
   public Piece chosen(int position) {
     List<Piece> list = this.pieces.stream()
-        .filter(piece -> piece.position == position)
+        .filter(piece -> piece.position == position && !piece.isGone)
         .collect(Collectors.toList());
     if (list.size() < 1) {
       return null;
     }
-    System.out.println(list.toString());
     return list.get(0);
   }
 

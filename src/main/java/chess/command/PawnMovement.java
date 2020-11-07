@@ -47,7 +47,7 @@ public class PawnMovement implements Movement {
     int pos = this.piece.position;
     pos += piece.isWhite ? -10 : 10; // if piece is white->↑(0,-10), black->↓(0,10)
 
-    if (this.valid.canMove(pos)) {
+    if (this.valid.canMove(piece, board, pos)) {
       positions.add(pos);
     }
 

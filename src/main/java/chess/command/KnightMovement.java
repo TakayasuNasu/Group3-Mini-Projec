@@ -20,10 +20,6 @@ public class KnightMovement implements Movement {
     this.board = board;
   }
 
-  public KnightMovement(int dest, Piece piece, Board board) {
-    this(piece, board);
-    this.setDestination(dest);
-  }
 
   /**
    * Move the piece to where the player has decided.
@@ -70,7 +66,7 @@ public class KnightMovement implements Movement {
     candidates.add(-1 - 20);
 
     for (int pos: candidates) {
-      if (this.valid.canMove(this.piece.position + pos)) {
+      if (this.valid.canMove(piece, board, this.piece.position + pos)) {
         positions.add(this.piece.position + pos);
       }
     }

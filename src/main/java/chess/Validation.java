@@ -8,21 +8,36 @@ import org.apache.commons.lang.math.NumberUtils;
 
 public class Validation {
 
-  public boolean canMove(Board board, int position) {
-    Piece piece = board.chosen(position);
-    if (piece == null) {
-      return false;
-    }
-    return this.canMove(position);
-  }
+//  public boolean canMove(Board board, int position) {
+//    Piece piece = board.chosen(position);
+//    if (piece == null) {
+//      return false;
+//    }
+//    return this.canMove(position);
+//  }
 
+  /**
+   * Check if the piece can move at the {@code position}
+   *  by Validating the "Existing Piece ".
+   *
+   *  If some piece {@code position} already exit,
+   *   and the color is same -> false
+   *   and the color is different -> ture but only once
+   *
+   * @param myPiece is the piece that you want to move
+   * @param board is the board you are playing on now
+   * @param position is the location where you want to check if you can move. (Not added yet!)
+   * @return
+   */
   public boolean canMove(Piece myPiece, Board board, int position) {
     Piece piece = board.chosen(position);
-    if (piece == null) {
-      return false;
-    }
-    if (piece.isWhite == myPiece.isWhite) {
-      return false;
+    if (piece != null) {
+      if (piece.isWhite == myPiece.isWhite) {
+        return false;
+      }else{
+        // have to fix here
+        return true;
+      }
     }
     return this.canMove(position);
   }
@@ -33,7 +48,7 @@ public class Validation {
    *
    *  If the {@code position} is not in the Board, return false.
    *
-   * @param position is the location where you want to check.
+   * @param position is the location where you want to check if you can move.
    * @return
    */
   public boolean canMove(int position) {
@@ -60,9 +75,6 @@ public class Validation {
     int position = Integer.parseInt(input);
     Piece p = board.chosen(position);
     if (p == null) {
-      return false;
-    }
-    if (!p.isGone) {
       return false;
     }
     return true;

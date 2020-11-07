@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class BishopMovementTest {
 
   BishopMovement movement;
-  int testPosition = 17; // set the position you want to check
+  int testPosition = 26; // set the position you want to check
 
   @BeforeEach
   void setUp() {
@@ -26,10 +26,13 @@ class BishopMovementTest {
   void where() {
 
     ArrayList<Integer> positions = this.movement.where();
-    System.out.println("Test position is: "+testPosition);
+    System.out.println("Test position is: " + testPosition);
 
     System.out.print("The positions where the piece can move: ");
     System.out.println(Arrays.deepToString(positions.toArray()));
+
+    Board board = new Board();
+
 
     String s1 = "|11|12|13|14|15|16|17|18|\n";
     String s2 = "|21|22|23|24|25|26|27|28|\n";
@@ -44,10 +47,11 @@ class BishopMovementTest {
      * "  " == where the piece can move
      * "!!" == the position of piece itself
      */
-    String s = s1+s2+s3+s4+s5+s6+s7+s8;
-    for (Integer i: positions) {
+    String s = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8;
+    for (Integer i : positions) {
       s = s.replace(Integer.toString(i), "  ");
     }
+
     s = s.replace(Integer.toString(testPosition), "!!");
     System.out.println(s);
 
