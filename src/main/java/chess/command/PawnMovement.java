@@ -16,7 +16,6 @@ public class PawnMovement implements Movement {
 
   // Designated constructor
   public PawnMovement(Piece piece, Board board) {
-    this.dest = dest;
     this.piece = piece;
     this.board = board;
   }
@@ -52,6 +51,6 @@ public class PawnMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 }

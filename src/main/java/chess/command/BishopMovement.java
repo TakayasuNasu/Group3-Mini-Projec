@@ -15,8 +15,7 @@ public class BishopMovement implements Movement {
 
 
   // Designated constructor
-  public BishopMovement(int dest, Piece piece, Board board) {
-    this.dest = dest;
+  public BishopMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
   }
@@ -61,7 +60,7 @@ public class BishopMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 
 
