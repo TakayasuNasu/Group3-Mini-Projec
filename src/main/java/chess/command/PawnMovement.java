@@ -14,11 +14,15 @@ public class PawnMovement implements Movement {
   Validation valid = new Validation();// Create a validation object so that we can use validation method "canMove"
 
 
-  // Designated constructor
+  //Constructor
   public PawnMovement(Piece piece, Board board) {
-    this.dest = dest;
     this.piece = piece;
     this.board = board;
+  }
+
+  public PawnMovement(int dest, Piece piece, Board board) {
+    this(piece, board);
+    this.setDestination(dest);
   }
 
   /**
@@ -52,6 +56,6 @@ public class PawnMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 }

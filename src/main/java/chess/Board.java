@@ -83,6 +83,13 @@ public class Board {
       blackPawn8
   ));
 
+  /**
+   * Get the Piece's object at the specified position.
+   * @param position is the location where the user selected.
+   *        It is id on the Board {11...88}
+   * @return each piece object (ex, Queen, Rook...) as Piece class.
+   *         If there is no piece at the position, return null.
+   */
   public Piece chosen(int position) {
     List<Piece> list = this.pieces.stream()
         .filter(piece -> piece.position == position)
@@ -90,6 +97,7 @@ public class Board {
     if (list.size() < 1) {
       return null;
     }
+    System.out.println(list.toString());
     return list.get(0);
   }
 

@@ -14,12 +14,18 @@ public class BishopMovement implements Movement {
   Validation valid = new Validation();// Create a validation object so that we can use validation method "canMove"
 
 
-  // Designated constructor
-  public BishopMovement(int dest, Piece piece, Board board) {
-    this.dest = dest;
+  //Constructor
+  public BishopMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
   }
+
+  public BishopMovement(int dest, Piece piece, Board board) {
+    this(piece, board);
+    this.setDestination(dest);
+  }
+
+
 
   /**
    * Move the piece to where the player has decided.
@@ -61,7 +67,7 @@ public class BishopMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 
 

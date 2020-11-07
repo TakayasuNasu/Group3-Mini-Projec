@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Test;
 class KingMovementTest {
 
   KingMovement movement;
-  int testPosition = 11;// set the position you want to check
+  int testPosition = 72;// set the position you want to check
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
     King King = new King();
     King.position = testPosition;
-    this.movement = new KingMovement(1, King, board);
+    this.movement = new KingMovement(King, board);
   }
 
   @Test

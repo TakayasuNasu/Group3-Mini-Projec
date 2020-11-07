@@ -2,6 +2,7 @@ package chess.command;
 
 import chess.Board;
 import chess.Validation;
+import chess.pieces.King;
 import chess.pieces.Piece;
 import java.util.ArrayList;
 
@@ -14,11 +15,15 @@ public class KingMovement implements Movement {
   Validation valid = new Validation();// Create a validation object so that we can use validation method "canMove"
 
 
-  // Designated constructor
-  public KingMovement(int dest, Piece piece, Board board) {
-    this.dest = dest;
+  //Constructor
+  public KingMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
+  }
+
+  public KingMovement(int dest, Piece piece, Board board) {
+    this(piece, board);
+    this.setDestination(dest);
   }
 
   /**
@@ -50,38 +55,20 @@ public class KingMovement implements Movement {
      */
 
     // ex (-1 -10) means -1 to x axis, -10 to y axis
-    int pos1 = this.piece.position + -1 - 10;
-    int pos2 = this.piece.position + 0 - 10;
-    int pos3 = this.piece.position + 1 - 10;
-    int pos4 = this.piece.position + -1 + 0;
-    int pos5 = this.piece.position + 1 + 0;
-    int pos6 = this.piece.position + -1 + 10;
-    int pos7 = this.piece.position + 0 + 10;
-    int pos8 = this.piece.position + 1 + 10;
+    ArrayList<Integer> candidates = new ArrayList<>();
+    candidates.add(-1 - 10);
+    candidates.add( 0 - 10);
+    candidates.add( 1 - 10);
+    candidates.add(-1 +  0);
+    candidates.add( 1 +  0);
+    candidates.add(-1 + 10);
+    candidates.add( 0 + 10);
+    candidates.add( 1 + 10);
 
-    if (this.valid.canMove(pos1)) {
-      positions.add(pos1);
-    }
-    if (this.valid.canMove(pos2)) {
-      positions.add(pos2);
-    }
-    if (this.valid.canMove(pos3)) {
-      positions.add(pos3);
-    }
-    if (this.valid.canMove(pos4)) {
-      positions.add(pos4);
-    }
-    if (this.valid.canMove(pos5)) {
-      positions.add(pos5);
-    }
-    if (this.valid.canMove(pos6)) {
-      positions.add(pos6);
-    }
-    if (this.valid.canMove(pos7)) {
-      positions.add(pos7);
-    }
-    if (this.valid.canMove(pos8)) {
-      positions.add(pos8);
+    for (int pos: candidates) {
+      if (this.valid.canMove(this.piece.position + pos)) {
+        positions.add(this.piece.position + pos);
+      }
     }
 
     return positions;
@@ -89,6 +76,6 @@ public class KingMovement implements Movement {
 
   @Override
   public void setDestination(int dest) {
-
+    this.dest = dest;
   }
 }

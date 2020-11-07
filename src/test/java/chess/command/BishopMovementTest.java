@@ -19,7 +19,7 @@ class BishopMovementTest {
     Board board = new Board();
     Bishop bishop = new Bishop();
     bishop.position = testPosition;
-    this.movement = new BishopMovement(1, bishop, board);
+    this.movement = new BishopMovement(bishop, board);
   }
 
   @Test

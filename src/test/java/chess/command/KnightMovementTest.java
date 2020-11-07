@@ -19,7 +19,7 @@ class KnightMovementTest {
     Board board = new Board();
     Knight Knight = new Knight();
     Knight.position = testPosition;
-    this.movement = new KnightMovement(1, Knight, board);
+    this.movement = new KnightMovement(Knight, board);
   }
 
   @Test

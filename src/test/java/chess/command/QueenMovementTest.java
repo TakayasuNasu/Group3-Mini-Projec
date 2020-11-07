@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 class QueenMovementTest {
 
   QueenMovement movement;
-  int testPosition = 56;
+  int testPosition = 65;
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
     Queen queen = new Queen();
-    queen.position = 41;
+    queen.position = testPosition;
     this.movement = new QueenMovement(queen, board);
   }
 
