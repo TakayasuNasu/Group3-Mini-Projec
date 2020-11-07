@@ -58,7 +58,7 @@ public class KnightMovement implements Movement {
      */
 
     // ex (1 -20) means +1 to x axis, -20 to y axis
-    
+
     ArrayList<Integer> candidates = new ArrayList<>();
     candidates.add( 1 - 20);
     candidates.add( 2 - 10);

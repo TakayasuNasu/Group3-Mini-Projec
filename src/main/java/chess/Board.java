@@ -85,6 +85,10 @@ public class Board {
 
   /**
    * Get the Piece's object at the specified position.
+   *
+   * ex) if position = 14 and there is a Queen at 14 ->  return (Piece) queen object
+   *   if there is no piece -> return null
+   *
    * @param position is the location where the user selected.
    *        It is id on the Board {11...88}
    * @return each piece object (ex, Queen, Rook...) as Piece class.

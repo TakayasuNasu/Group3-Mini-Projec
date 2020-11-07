@@ -27,6 +27,15 @@ public class Validation {
     return this.canMove(position);
   }
 
+  /**
+   * Check if the piece can move at the {@code position}
+   *  by Validating the "Board Area".
+   *
+   *  If the {@code position} is not in the Board, return false.
+   *
+   * @param position is the location where you want to check.
+   * @return
+   */
   public boolean canMove(int position) {
     if (position < 11) {
       return false;
