@@ -7,6 +7,10 @@ import java.util.Arrays;
 
 public class Console {
 
+  static void help(){
+    System.out.println("-------------------------");
+  }
+
   static void cellNumber() {
     System.out.println("-------------------------");
     System.out.println("|11|12|13|14|15|16|17|18|");

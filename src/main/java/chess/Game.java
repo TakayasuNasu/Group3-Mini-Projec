@@ -25,6 +25,10 @@ public class Game {
         Console.error(1);
         continue;
       }
+      if (input.equals("help")) {
+        Console.help();
+        continue;
+      }
       this.piece = this.whitePlayer.choose(Integer.parseInt(input));
       Movement movement = this.factory.create(this.piece, this.board);
       ArrayList<Integer> positions = movement.where();
