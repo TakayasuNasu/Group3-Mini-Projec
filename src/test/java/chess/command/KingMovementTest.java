@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class KingMovementTest {
 
   KingMovement movement;
-  int testPosition = 11;// set the position you want to check
+  int testPosition = 27;// set the position you want to check
 
   @BeforeEach
   void setUp() {

@@ -14,10 +14,15 @@ public class PawnMovement implements Movement {
   Validation valid = new Validation();// Create a validation object so that we can use validation method "canMove"
 
 
-  // Designated constructor
+  //Constructor
   public PawnMovement(Piece piece, Board board) {
     this.piece = piece;
     this.board = board;
+  }
+
+  public PawnMovement(int dest, Piece piece, Board board) {
+    this(piece, board);
+    this.setDestination(dest);
   }
 
   /**
@@ -42,7 +47,7 @@ public class PawnMovement implements Movement {
     int pos = this.piece.position;
     pos += piece.isWhite ? -10 : 10; // if piece is white->↑(0,-10), black->↓(0,10)
 
-    if (this.valid.canMove(pos)) {
+    if (this.valid.canMove(piece, board, pos)) {
       positions.add(pos);
     }
 

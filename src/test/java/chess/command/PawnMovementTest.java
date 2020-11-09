@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class PawnMovementTest {
 
   PawnMovement movement;
-  int testPosition = 77;// set the position you want to check
+  int testPosition = 17;// set the position you want to check
 
   @BeforeEach
   void setUp() {
