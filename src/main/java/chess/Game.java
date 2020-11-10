@@ -11,8 +11,9 @@ public class Game {
   MovementFactory factory = new MovementFactory();
   MacroMovement mm = new MacroMovement();
   Piece piece;
+  Player currentPlayer;
   Player whitePlayer = new Player(board);
-  Player BlackPlayer = new Player(board);
+  Player blackPlayer = new Player(board);
   boolean isFinished = false;
 
   public void start() {
@@ -20,7 +21,8 @@ public class Game {
       Console.cellNumber();
       Console.showBoard(this.board);
       Console.beforeCall();
-      String input = this.whitePlayer.call();
+      this.currentPlayer = this.getNextPlayer();
+      String input = this.currentPlayer.call();
       if (input.equals("error")) {
         Console.error(1);
         continue;
@@ -29,21 +31,32 @@ public class Game {
         Console.help();
         continue;
       }
-      this.piece = this.whitePlayer.choose(Integer.parseInt(input));
+      if (input.equals("resign")) {
+        Console.resign(this.currentPlayer);
+        break;
+      }
+      this.piece = this.currentPlayer.choose(Integer.parseInt(input));
       Movement movement = this.factory.create(this.piece, this.board);
       ArrayList<Integer> positions = movement.where();
       Console.pieceAndPosition(this.piece, Integer.parseInt(input));
       Console.positions(positions);
-      int dest = this.whitePlayer.decide(positions);
+      int dest = this.currentPlayer.decide(positions);
       if (dest == -1) {
         Console.error(2);
         continue;
       }
       movement.setDestination(dest);
-      this.whitePlayer.move(movement);
+      this.currentPlayer.move(movement);
       this.mm.push(movement);
-      this.isFinished = true;
+      Console.changePlayer();
     }
+  }
+
+  private Player getNextPlayer() {
+    if (this.currentPlayer == null) {
+      this.currentPlayer = this.whitePlayer;
+    }
+    return this.currentPlayer == this.whitePlayer ? this.blackPlayer : this.whitePlayer;
   }
 
 }

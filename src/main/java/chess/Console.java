@@ -7,8 +7,16 @@ import java.util.Arrays;
 
 public class Console {
 
-  static void help(){
+  static void help() {
     System.out.println("-------------------------");
+  }
+
+  static void resign(Player player) {
+    System.out.println("Game over White won by resignation");
+  }
+
+  static void changePlayer() {
+    System.out.println("Black's turn finished. next is White.");
   }
 
   static void cellNumber() {
@@ -61,13 +69,13 @@ public class Console {
   static void error(int code) {
     switch (code) {
       case 1:
-        System.out.println("Invalid chosen piece!");
+        System.err.println("Invalid chosen piece!");
         break;
       case 2:
-        System.out.println("Invalid decided piece!");
+        System.err.println("Invalid decided piece!");
         break;
       default:
-        System.out.println("");
+        System.err.println("");
     }
   }
 }
