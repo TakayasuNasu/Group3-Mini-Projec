@@ -11,13 +11,16 @@ import org.junit.jupiter.api.Test;
 
 class PawnMovementTest {
 
+
+  boolean testPieceIsWhite = false; //set the color of piece you want to check
+  int testPosition = 17; // set the position you want to check
+
   PawnMovement movement;
-  int testPosition = 17;// set the position you want to check
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
-    Pawn Pawn = new Pawn();
+    Pawn Pawn = new Pawn(1, testPieceIsWhite);;
     Pawn.position = testPosition;
     this.movement = new PawnMovement(Pawn, board);
   }

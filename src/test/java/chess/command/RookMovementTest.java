@@ -11,12 +11,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RookMovementTest {
+
+  boolean testPieceIsWhite = false; //set the color of piece you want to check
+  int testPosition = 62; // set the position you want to check
+
   RookMovement movement;
-  int testPosition = 22;
+
   @BeforeEach
   void setUp() {
     Board board = new Board();
-    Rook Rook = new Rook();
+    Rook Rook = new Rook(1,testPieceIsWhite);
     Rook.position = testPosition;
     this.movement = new RookMovement(Rook, board);
   }
