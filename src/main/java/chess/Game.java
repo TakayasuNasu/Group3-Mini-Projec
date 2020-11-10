@@ -11,8 +11,8 @@ public class Game {
   MovementFactory factory = new MovementFactory();
   MacroMovement mm = new MacroMovement();
   Piece piece;
-  Player whitePlayer = new Player(board);
-  Player BlackPlayer = new Player(board);
+  Player whitePlayer = new Player(board, true);
+  Player BlackPlayer = new Player(board, false);
   boolean isFinished = false;
 
   public void start() {
