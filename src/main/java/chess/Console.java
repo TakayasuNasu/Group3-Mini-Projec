@@ -7,8 +7,30 @@ import java.util.Arrays;
 
 public class Console {
 
-  static void help(){
+  static void help() {
     System.out.println("-------------------------");
+  }
+
+  static void resign(Player player) {
+    if (player.isWhite) {
+      System.out.println("Game over Black won by resignation");
+    } else {
+      System.out.println("Game over White won by resignation");
+    }
+  }
+
+  static void won(Player player) {
+    if (player.isWhite) {
+      System.out.println("");
+    }
+  }
+
+  static void changePlayer(Player player) {
+    if (player.isWhite) {
+      System.out.println("White's turn finished. next turn is Black.");
+    } else {
+      System.out.println("Black's turn finished. next turn is White.");
+    }
   }
 
   static void cellNumber() {
@@ -55,19 +77,23 @@ public class Console {
   }
 
   static void pieceAndPosition(Piece piece, int position) {
-    System.out.printf("you chose %s and that's position is %d\n", piece.symbol, position);
+    System.out.printf("you chose %s and position is %d\n", piece.symbol, position);
+  }
+
+  static void pieceMoved(Piece piece, int position) {
+    System.out.printf("you moved %s and destination is %d\n", piece.symbol, position);
   }
 
   static void error(int code) {
     switch (code) {
       case 1:
-        System.out.println("Invalid chosen piece!");
+        System.err.println("Invalid chosen piece!");
         break;
       case 2:
-        System.out.println("Invalid decided piece!");
+        System.err.println("Invalid decided piece!");
         break;
       default:
-        System.out.println("");
+        System.err.println("");
     }
   }
 }

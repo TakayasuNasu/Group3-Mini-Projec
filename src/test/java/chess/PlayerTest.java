@@ -14,12 +14,12 @@ class PlayerTest {
 
   @BeforeEach
   void setUp() {
-    this.player = new Player(new Board(),playerColor);
+    this.player = new Player(new Board(), playerColor);
   }
 
   @Test
   void choose() throws Exception {
-    Piece piece = this.player.choose(1);
+    Piece piece = this.player.choose(11);
   }
 
 }
