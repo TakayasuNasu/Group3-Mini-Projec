@@ -47,7 +47,7 @@ public class Game {
       }
       Console.pieceMoved(this.piece, dest);
       movement.setDestination(dest);
-      this.currentPlayer.move(movement);
+      this.currentPlayer.move(movement, dest);
       this.mm.push(movement);
       if (this.board.getKing(this.getNextPlayer().isWhite).isGone) {
         Console.won(this.currentPlayer);
