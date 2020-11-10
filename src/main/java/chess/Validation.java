@@ -1,5 +1,8 @@
 package chess;
 
+import chess.pieces.King;
+import chess.pieces.Knight;
+import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
@@ -8,13 +11,33 @@ import org.apache.commons.lang.math.NumberUtils;
 
 public class Validation {
 
-//  public boolean canMove(Board board, int position) {
-//    Piece piece = board.chosen(position);
-//    if (piece == null) {
-//      return false;
-//    }
-//    return this.canMove(position);
-//  }
+  /**
+   *  This variables is used in {@code canMove()} method,
+   *  so the piece can go to the opponent piece's position only the "first" time,
+   *  but can not go further than it.
+   *
+   *  We can manage, "if the piece (you are trying to move) has encountered to opponent piece",
+   *  while searching the positions.
+   *
+   *  How it works:
+   *
+   *  if this {@code didEncounter} is false && the piece encounter to the opponent piece,
+   *   == you can move to the position. And {@code didEncounter} become true.
+   *
+   *  if this {@code didEncounter} is ture
+   *   == it means you've already encountered to the piece
+   *   == you can't go further
+   *   == so always return false at {@code canMove()} method.
+   *
+   *  ex)
+   *  {w->, , , , B,B}  : {@code didEncounter} false
+   *  {  , , , , w,B}   : {@code didEncounter} true
+   *
+   */
+  boolean didEncounter = false;
+  public void setDidEncounter(boolean didEncounter) {
+    this.didEncounter = didEncounter;
+  }
 
   /**
    * Check if the piece can move at the {@code position}
@@ -22,7 +45,7 @@ public class Validation {
    *
    *  If some piece {@code position} already exit,
    *   and the color is same -> false
-   *   and the color is different -> ture but only once
+   *   and the color is different -> true
    *
    * @param myPiece is the piece that you want to move
    * @param board is the board you are playing on now
@@ -31,14 +54,29 @@ public class Validation {
    */
   public boolean canMove(Piece myPiece, Board board, int position) {
     Piece piece = board.chosen(position);
+    System.out.println( piece != null ? piece.position: null);
+    System.out.println(myPiece.isWhite);
+
+    //if the piece encountered to other piece before, you can't move further.
+    if (didEncounter){
+      return false;
+    }
+
+    // if some piece already exist at the position, check the color
     if (piece != null) {
+
+      // if the piece belongs to the user, you never can go there.
       if (piece.isWhite == myPiece.isWhite) {
         return false;
+
+      // if the piece belongs to the opponent, you can go only once (take it)
       }else{
-        // have to fix here
-        return true;
+          didEncounter = true; // Encountered to the piece
+          return true;
       }
     }
+
+    //If there is no piece, check if it is on the board.
     return this.canMove(position);
   }
 
@@ -52,20 +90,14 @@ public class Validation {
    * @return
    */
   public boolean canMove(int position) {
-    if (position < 11) {
-      return false;
-    }
-    if (position > 88) {
-      return false;
-    }
-    if (Lists.newArrayList(19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80)
-        .contains(position)) {
-      return false;
-    }
-    return true;
+
+    int xAxis = position%10;
+    int yAxis = position/10%10;
+
+    return xAxis >= 1 && xAxis <= 8 && yAxis >= 1 && yAxis <= 8;
   }
 
-  public boolean playerCall(String input, Board board) {
+  public boolean playerCall(String input, Board board, boolean playersColor) {
     if (Lists.newArrayList("help", "resign").contains(input)) {
       return true;
     }
@@ -77,6 +109,10 @@ public class Validation {
     if (p == null) {
       return false;
     }
+    if (p.isWhite == playersColor) {
+      return false;
+    }
+
     return true;
   }
 

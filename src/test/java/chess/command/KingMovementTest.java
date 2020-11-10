@@ -11,13 +11,16 @@ import org.junit.jupiter.api.Test;
 
 class KingMovementTest {
 
+
+  boolean testPieceIsWhite = false; //set the color of piece you want to check
+  int testPosition = 62; // set the position you want to check
+
   KingMovement movement;
-  int testPosition = 27;// set the position you want to check
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
-    King King = new King();
+    King King = new King(1, testPieceIsWhite);
     King.position = testPosition;
     this.movement = new KingMovement(King, board);
   }

@@ -66,6 +66,7 @@ public class KnightMovement implements Movement {
     candidates.add(-1 - 20);
 
     for (int pos: candidates) {
+      this.valid.setDidEncounter(false);
       if (this.valid.canMove(piece, board, this.piece.position + pos)) {
         positions.add(this.piece.position + pos);
       }

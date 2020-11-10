@@ -7,7 +7,7 @@ public class Symbol {
   public static final String BLACK_KING = "\u2654";
   public static final String BLACK_QUEEN = "\u2655";
   public static final String BLACK_ROOK = "\u2656";
-  public static final String BLACK_BISHOP = "\u2654";
+  public static final String BLACK_BISHOP = "\u2657";
   public static final String BLACK_KNIGHT = "\u2658";
   public static final String BLACK_PAWN = "\u2659";
 

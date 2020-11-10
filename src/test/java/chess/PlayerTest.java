@@ -10,15 +10,16 @@ import org.junit.jupiter.api.Test;
 class PlayerTest {
 
   Player player;
+  boolean playerColor = true;
 
   @BeforeEach
   void setUp() {
-    this.player = new Player(new Board());
+    this.player = new Player(new Board(), playerColor);
   }
 
   @Test
   void choose() throws Exception {
-    Piece piece = this.player.choose(1);
+    Piece piece = this.player.choose(11);
   }
 
 }

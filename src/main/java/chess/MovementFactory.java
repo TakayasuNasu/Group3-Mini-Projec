@@ -6,6 +6,7 @@ import chess.command.KnightMovement;
 import chess.command.Movement;
 import chess.command.PawnMovement;
 import chess.command.QueenMovement;
+import chess.command.RookMovement;
 import chess.pieces.Piece;
 
 public class MovementFactory {
@@ -24,7 +25,7 @@ public class MovementFactory {
         this.movement = new BishopMovement(piece, board);
         break;
       case "Rook":
-        this.movement = new QueenMovement(piece, board);
+        this.movement = new RookMovement(piece, board);
         break;
       case "Knight":
         this.movement = new KnightMovement(piece, board);

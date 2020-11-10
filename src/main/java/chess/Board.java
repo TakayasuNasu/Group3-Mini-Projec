@@ -85,14 +85,13 @@ public class Board {
 
   /**
    * Get the Piece's object at the specified position.
+   * <p>
+   * ex) if position = 14 and there is a Queen at 14 ->  return (Piece) queen object if there is no
+   * piece -> return null
    *
-   * ex) if position = 14 and there is a Queen at 14 ->  return (Piece) queen object
-   *   if there is no piece -> return null
-   *
-   * @param position is the location where the user selected.
-   *        It is id on the Board {11...88}
-   * @return each piece object (ex, Queen, Rook...) as Piece class.
-   *         If there is no piece at the position, return null.
+   * @param position is the location where the user selected. It is id on the Board {11...88}
+   * @return each piece object (ex, Queen, Rook...) as Piece class. If there is no piece at the
+   * position, return null.
    */
   public Piece chosen(int position) {
     List<Piece> list = this.pieces.stream()
@@ -102,6 +101,14 @@ public class Board {
       return null;
     }
     return list.get(0);
+  }
+
+  public King getKing(boolean isWhite) {
+    if (isWhite) {
+      return this.whiteKing;
+    } else {
+      return this.blackKing;
+    }
   }
 
 }
