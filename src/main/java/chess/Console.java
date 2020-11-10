@@ -7,8 +7,13 @@ import java.util.Arrays;
 
 public class Console {
 
-  static void help() {
-    System.out.println("-------------------------");
+  static void help(){
+    System.out.println("* type 'help' for help");
+    System.out.println("* type 'board' to see the board again");
+    System.out.println("* type 'resign' to resign");
+    System.out.println("* type 'moves' to list all possible moves");
+    System.out.println("* type 'square' (e.g. 21, 35, 44) to list possible moves for that square");
+    System.out.println("type 'UCI' (e.g. 33, 27,70) to make a move");
   }
 
   static void resign(Player player) {
@@ -68,12 +73,11 @@ public class Console {
   }
 
   static void beforeCall() {
-    System.out.print("Enter UCI (type 'help' for 'help'): ");
+    System.out.print("Enter UCI (type 'help' for help): ");
   }
 
   static void positions(ArrayList<Integer> positions) {
-    System.out
-        .println("You can choose destination from " + Arrays.deepToString(positions.toArray()));
+    System.out.println("You can choose destination from " + Arrays.deepToString(positions.toArray()));
   }
 
   static void pieceAndPosition(Piece piece, int position) {
@@ -96,4 +100,5 @@ public class Console {
         System.err.println("");
     }
   }
+
 }
