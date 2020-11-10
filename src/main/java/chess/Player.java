@@ -26,13 +26,12 @@ public class Player {
    * @return the info of piece, or null
    */
   public Piece choose(int position) {
-    Piece chosenPiece = this.board.chosen(position);
-    return chosenPiece.isWhite == this.isWhite ? chosenPiece : null;
+    return this.board.chosen(position);
   }
 
   public String call() {
     String input = scan.nextLine();
-    if (!this.valid.playerCall(input, this.board)) {
+    if (!this.valid.playerCall(input, this.board, this.isWhite)) {
       return "error";
     }
     return input;

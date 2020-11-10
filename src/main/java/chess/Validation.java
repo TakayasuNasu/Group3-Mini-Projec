@@ -97,7 +97,7 @@ public class Validation {
     return xAxis >= 1 && xAxis <= 8 && yAxis >= 1 && yAxis <= 8;
   }
 
-  public boolean playerCall(String input, Board board) {
+  public boolean playerCall(String input, Board board, boolean playersColor) {
     if (Lists.newArrayList("help", "resign").contains(input)) {
       return true;
     }
@@ -109,6 +109,10 @@ public class Validation {
     if (p == null) {
       return false;
     }
+    if (p.isWhite == playersColor) {
+      return false;
+    }
+
     return true;
   }
 
