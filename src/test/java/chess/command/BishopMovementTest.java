@@ -11,13 +11,16 @@ import org.junit.jupiter.api.Test;
 
 class BishopMovementTest {
 
+  boolean testPieceIsWhite = false; //set the color of piece you want to check
+  int testPosition = 47; // set the position you want to check
+
   BishopMovement movement;
-  int testPosition = 26; // set the position you want to check
+
 
   @BeforeEach
   void setUp() {
     Board board = new Board();
-    Bishop bishop = new Bishop();
+    Bishop bishop = new Bishop(1, testPieceIsWhite);
     bishop.position = testPosition;
     this.movement = new BishopMovement(bishop, board);
   }

@@ -12,8 +12,8 @@ public class Game {
   MacroMovement mm = new MacroMovement();
   Piece piece;
   Player currentPlayer;
-  Player whitePlayer = new Player(board);
-  Player blackPlayer = new Player(board);
+  Player whitePlayer = new Player(board, true);
+  Player blackPlayer = new Player(board, false);
   boolean isFinished = false;
 
   public void start() {
@@ -21,7 +21,7 @@ public class Game {
       Console.cellNumber();
       Console.showBoard(this.board);
       Console.beforeCall();
-      this.currentPlayer = this.getNextPlayer();
+      this.currentPlayer = this.changePlayer();
       String input = this.currentPlayer.call();
       if (input.equals("error")) {
         Console.error(1);
@@ -45,17 +45,28 @@ public class Game {
         Console.error(2);
         continue;
       }
+      Console.pieceMoved(this.piece, dest);
       movement.setDestination(dest);
       this.currentPlayer.move(movement);
       this.mm.push(movement);
-      Console.changePlayer();
+      if (this.board.getKing(this.getNextPlayer().isWhite).isGone) {
+        Console.won(this.currentPlayer);
+        break;
+      }
+      Console.changePlayer(this.currentPlayer);
     }
   }
 
-  private Player getNextPlayer() {
+  private Player changePlayer() {
     if (this.currentPlayer == null) {
       this.currentPlayer = this.whitePlayer;
     }
+    this.currentPlayer =
+        this.currentPlayer == this.whitePlayer ? this.blackPlayer : this.whitePlayer;
+    return this.currentPlayer;
+  }
+
+  private Player getNextPlayer() {
     return this.currentPlayer == this.whitePlayer ? this.blackPlayer : this.whitePlayer;
   }
 

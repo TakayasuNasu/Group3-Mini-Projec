@@ -75,6 +75,9 @@ public class BishopMovement implements Movement {
    * @return positions
    */
   public ArrayList<Integer> searchLine(int cur, ArrayList<Integer> positions, int direction) {
+
+    // Before start searching the line, initialize the didEncounter variable.
+    this.valid.setDidEncounter(false);
     for (int i = 1; i < 8; i++) {
       // if the piece can not move -> stop searching
       if (!this.valid.canMove(piece, board,cur + direction * i)) {
