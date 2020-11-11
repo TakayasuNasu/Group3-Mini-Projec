@@ -54,8 +54,8 @@ public class Validation {
    */
   public boolean canMove(Piece myPiece, Board board, int position) {
     Piece piece = board.chosen(position);
-    System.out.println( piece != null ? piece.position: null);
-    System.out.println(myPiece.isWhite);
+//    System.out.println( piece != null ? piece.position: null);
+//    System.out.println(myPiece.isWhite);
 
     //if the piece encountered to other piece before, you can't move further.
     if (didEncounter){

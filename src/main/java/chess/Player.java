@@ -45,7 +45,14 @@ public class Player {
     return Integer.parseInt(input);
   }
 
-  public void move(Movement movement) {
+  public void move(Movement movement, int dest) {
+    //Piece that already exits that position
+    Piece exitPiece = this.board.chosen(dest);
+
+    //if exit -> that piece was taken
+    if (exitPiece != null){
+      exitPiece.taken();
+    }
     movement.run();
   }
 }
