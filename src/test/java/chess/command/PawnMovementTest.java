@@ -13,7 +13,7 @@ class PawnMovementTest {
 
 
   boolean testPieceIsWhite = false; //set the color of piece you want to check
-  int testPosition = 17; // set the position you want to check
+  int testPosition = 74; // set the position you want to check
 
   PawnMovement movement;
 

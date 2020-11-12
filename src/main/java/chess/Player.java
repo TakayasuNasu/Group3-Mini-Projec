@@ -46,10 +46,10 @@ public class Player {
   }
 
   public void move(Movement movement, int dest) {
-    //Piece that already exits that position
+    //Get the piece that exited the position previously.
     Piece exitPiece = this.board.chosen(dest);
 
-    //if exit -> that piece was taken
+    //if the piece exited?  -> execute taken()
     if (exitPiece != null){
       exitPiece.taken();
     }
