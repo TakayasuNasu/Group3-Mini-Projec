@@ -2,6 +2,7 @@ package chess.command;
 
 import chess.Board;
 import chess.Validation;
+import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import java.util.ArrayList;
 
@@ -42,15 +43,97 @@ public class PawnMovement implements Movement {
    */
   @Override
   public ArrayList<Integer> where() {
+    /**
+     * {@code positions} is list of position, that the chosen piece can move.
+     * {@code disList} is list of distances from the chosen piece.
+     *  ex) {1,2,3} indicates {1+curPos,2+curPos,3+curPos}
+     */
     ArrayList<Integer> positions = new ArrayList<>();
+    ArrayList<Integer> disList = new ArrayList<>();
 
-    int pos = this.piece.position;
-    pos += piece.isWhite ? -10 : 10; // if piece is white->↑(0,-10), black->↓(0,10)
+    int curPos = this.piece.position;
 
-    if (this.valid.canMove(piece, board, pos)) {
-      positions.add(pos);
+    /**
+     * Create and Decide where to search
+     * There four position Pawn can move as follows.
+     *
+     *    4
+     *  2 1 3
+     *    P
+     *
+     * pos1 is basic move.
+     * pos2,3 is special movement that can go only the opponent piece exits there.
+     * pos4 is special movement that can go only from the initial position.
+     *
+     * pos1 is -10 distance to previous position,
+     * pos4 is -20,
+     * pos2 is -9,
+     * pos3 is -11.
+     *
+     * When the color is black, those distance be flips(be positive)
+     * Because White moves ↑, Black moves ↓.
+     *
+     * Each pos1...pos3 are stored as list and checked if the piece can move,
+     * by {@code checkFront} method.
+     * pos4 are checked, in addition to pos1 condition.
+     *
+     */
+    int dir = piece.isWhite ? 1 : -1;
+    disList.add(-11*dir);
+    disList.add(-9*dir);
+    disList.add(-10*dir);
+
+    for (int dis: disList) {
+      positions = checkFront(positions, curPos, dis);
     }
 
+    return positions;
+  }
+
+
+  /**
+   * Check the 4 positions where Pawn can move.
+   *
+   *    2
+   *  3 1 4
+   *    P
+   *
+   * @param positions is the list where the piece can move
+   * @param pos is the position of piece(Pawn) you want to check
+   * @param dis is the distance from pos
+   * @return positions
+   */
+  public ArrayList<Integer> checkFront(ArrayList<Integer> positions, int pos, int dis){
+    this.valid.setDidEncounter(false);
+    dest = pos + dis; // create the destination you want to check.
+
+    // check pos1
+    if (Math.abs(dis) == 10){
+      // if there exists a piece, you can go there
+      if (board.chosen(dest)!=null){
+        return positions;
+      }else{
+        // if no piece and the pos is first position, check pos4
+        // But if there exists any piece (including opponent piece),
+        // you can't go there.
+        Pawn p = (Pawn) this.piece;
+        if (p.getDefaultPosition() == p.position &&
+            board.chosen(dest + dis) == null &&
+            valid.canMove(dest + dis)){
+          positions.add(dest + dis);
+        }
+      }
+    }
+
+    //Check pos2,3
+    if (Math.abs(dis) == 9 || Math.abs(dis) == 11){
+      if (board.chosen(dest)==null){ return positions;}
+    }
+
+    //If there are no piece, then check by board area.
+    if (this.valid.canMove(piece, board, dest)){
+      positions.add(dest);
+    };
     return positions;
   }
 

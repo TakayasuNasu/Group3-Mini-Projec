@@ -54,15 +54,13 @@ public class Validation {
    */
   public boolean canMove(Piece myPiece, Board board, int position) {
     Piece piece = board.chosen(position);
-//    System.out.println( piece != null ? piece.position: null);
-//    System.out.println(myPiece.isWhite);
 
     //if the piece encountered to other piece before, you can't move further.
     if (didEncounter){
       return false;
     }
 
-    // if some piece already exist at the position, check the color
+    // If some piece already exist at the position, check the color
     if (piece != null) {
 
       // if the piece belongs to the user, you never can go there.
