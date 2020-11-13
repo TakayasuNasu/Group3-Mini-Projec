@@ -1,5 +1,6 @@
 package chess;
 
+import chess.command.Movement;
 import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
@@ -101,6 +102,14 @@ public class Board {
       return null;
     }
     return list.get(0);
+  }
+
+  public List<Piece> movablePieces() {
+    return this.pieces.stream()
+        .filter(piece -> {
+          Movement movement = new MovementFactory().create(piece, this);
+          return movement.where().size() > 0;
+        }).collect(Collectors.toList());
   }
 
   public King getKing(boolean isWhite) {

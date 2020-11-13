@@ -4,10 +4,12 @@ import chess.pieces.Piece;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Console {
 
-  static void help(){
+  static void help() {
     System.out.println("* type 'help' for help");
     System.out.println("* type 'board' to see the board again");
     System.out.println("* type 'resign' to resign");
@@ -24,9 +26,41 @@ public class Console {
     }
   }
 
+  static void movable(List<Piece> pieces, Player player) {
+    List<Piece> myPieces = pieces.stream()
+        .filter(piece -> piece.isWhite == player.isWhite)
+        .collect(Collectors.toList());
+
+    StringBuilder sb = new StringBuilder("-------------------------       Line\n");
+    for (int i = 11; i < 89; i++) {
+      if (Lists.newArrayList(19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80).contains(i)) {
+        continue;
+      }
+      sb.append(" ");
+      boolean found = false;
+      for (Piece p : myPieces) {
+        if (p.position == i) {
+          sb.append(p.isGone ? Symbol.EMPTY : p.symbol);
+          found = true;
+        }
+      }
+      if (!found) {
+        sb.append(Symbol.EMPTY);
+      }
+      if (Lists.newArrayList(18, 28, 38, 48, 58, 68, 78, 88).contains(i)) {
+        sb.append(i - 8).append("\n");
+      }
+    }
+    sb.append(
+        "  1   2   3   4   5   6   7   8\n                            Row\n-------------------------\n");
+    System.out.println(sb.toString());
+  }
+
   static void won(Player player) {
     if (player.isWhite) {
-      System.out.println("");
+      System.out.println("Game over White won by Check");
+    } else {
+      System.out.println("Game over Black won by Check");
     }
   }
 
@@ -40,9 +74,9 @@ public class Console {
 
   static void playerTurn(Player player) {
     if (player.isWhite) {
-      System.out.printf("Now it's White's %s turn!\n",Symbol.WHITE_PAWN);
+      System.out.printf("Now it's White's %s turn!\n", Symbol.WHITE_PAWN);
     } else {
-      System.out.printf("Now it's Black's %s turn!\n",Symbol.BLACK_PAWN);
+      System.out.printf("Now it's Black's %s turn!\n", Symbol.BLACK_PAWN);
     }
   }
 
@@ -77,11 +111,12 @@ public class Console {
         sb.append(Symbol.EMPTY);
       }
       if (Lists.newArrayList(18, 28, 38, 48, 58, 68, 78, 88).contains(i)) {
-        sb.append(i-8 + "\n");
+        sb.append(i - 8).append("\n");
 
       }
     }
-    sb.append("  1   2   3   4   5   6   7   8\n                            Row\n-------------------------\n");
+    sb.append(
+        "  1   2   3   4   5   6   7   8\n                            Row\n-------------------------\n");
     System.out.println(sb.toString());
   }
 
@@ -89,8 +124,8 @@ public class Console {
     System.out.print("Enter UCI (type 'help' for help): ");
   }
 
-  static void positionsHelp(ArrayList<Integer> positions){
-    if (positions.size() <= 0){
+  static void positionsHelp(ArrayList<Integer> positions) {
+    if (positions.size() <= 0) {
       System.out.println("(...There is no place to move...)");
     }
     System.out.println("(If you want to choose other pieces, please enter \"q\")");
@@ -98,7 +133,8 @@ public class Console {
 
 
   static void positions(ArrayList<Integer> positions) {
-    System.out.println("You can choose destination from " + Arrays.deepToString(positions.toArray()));
+    System.out
+        .println("You can choose destination from " + Arrays.deepToString(positions.toArray()));
   }
 
   static void pieceAndPosition(Piece piece, int position) {
