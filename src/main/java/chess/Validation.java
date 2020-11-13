@@ -107,7 +107,8 @@ public class Validation {
     if (p == null) {
       return false;
     }
-    if (p.isWhite == playersColor) {
+    // if the chosen piece's color and player color don't much -> false
+    if (p.isWhite != playersColor) {
       return false;
     }
 

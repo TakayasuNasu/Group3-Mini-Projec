@@ -38,7 +38,16 @@ public class Console {
     }
   }
 
+  static void playerTurn(Player player) {
+    if (player.isWhite) {
+      System.out.printf("Now it's White's %s turn!\n",Symbol.WHITE_PAWN);
+    } else {
+      System.out.printf("Now it's Black's %s turn!\n",Symbol.BLACK_PAWN);
+    }
+  }
+
   static void cellNumber() {
+    System.out.println("\nThis is a Coordinates that indicates chess' positions.\n");
     System.out.println("------------------------- Line");
     System.out.println("|11|12|13|14|15|16|17|18|   10");
     System.out.println("|21|22|23|24|25|26|27|28|   20");
@@ -51,7 +60,7 @@ public class Console {
     System.out.println(" ");
     System.out.println("  1  2  3  4  5  6  7  8");
     System.out.println("                     Row");
-    System.out.println("-------------------------");
+    System.out.println("\n\n");
   }
 
   static void showBoard(Board bord) {
@@ -79,6 +88,8 @@ public class Console {
   static void beforeCall() {
     System.out.print("Enter UCI (type 'help' for help): ");
   }
+
+
 
   static void positions(ArrayList<Integer> positions) {
     System.out.println("You can choose destination from " + Arrays.deepToString(positions.toArray()));

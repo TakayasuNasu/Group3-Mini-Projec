@@ -2,6 +2,7 @@ package chess;
 
 import chess.command.MacroMovement;
 import chess.command.Movement;
+import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import java.util.ArrayList;
 
@@ -13,13 +14,15 @@ public class Game {
   Piece piece;
   Player whitePlayer = new Player(board, true);
   Player blackPlayer = new Player(board, false);
-  Player currentPlayer = this.blackPlayer; //Default player
+  Player currentPlayer = this.whitePlayer; //Default player
   boolean isFinished = false;
 
   public void start() {
+    Console.cellNumber();
     while (!this.isFinished) {
-      Console.cellNumber();
+
       Console.showBoard(this.board);
+      Console.playerTurn(this.currentPlayer);
       Console.beforeCall();
 
       String input = this.currentPlayer.call();
@@ -49,10 +52,10 @@ public class Game {
       while(true) {
         Console.pieceAndPosition(this.piece, Integer.parseInt(input));
         Console.positions(positions);
+        System.out.println("(If you want to choose other piece, please enter \"q\")");
         dest = this.currentPlayer.decide(positions);
         if (dest == -1) {
           Console.error(2);
-          System.out.println("if you want to choose other piece, please enter \"q\"");
         }else{
           break;
         }
