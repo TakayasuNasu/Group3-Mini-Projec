@@ -89,6 +89,12 @@ public class Console {
     System.out.print("Enter UCI (type 'help' for help): ");
   }
 
+  static void positionsHelp(ArrayList<Integer> positions){
+    if (positions.size() <= 0){
+      System.out.println("(...There is no place to move...)");
+    }
+    System.out.println("(If you want to choose other pieces, please enter \"q\")");
+  }
 
 
   static void positions(ArrayList<Integer> positions) {

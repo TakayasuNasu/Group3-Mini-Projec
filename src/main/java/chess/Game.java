@@ -52,7 +52,7 @@ public class Game {
       while(true) {
         Console.pieceAndPosition(this.piece, Integer.parseInt(input));
         Console.positions(positions);
-        System.out.println("(If you want to choose other piece, please enter \"q\")");
+        Console.positionsHelp(positions);
         dest = this.currentPlayer.decide(positions);
         if (dest == -1) {
           Console.error(2);
