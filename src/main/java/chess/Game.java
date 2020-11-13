@@ -2,7 +2,6 @@ package chess;
 
 import chess.command.MacroMovement;
 import chess.command.Movement;
-import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import java.util.ArrayList;
 
@@ -32,6 +31,10 @@ public class Game {
       }
       if (input.equals("help")) {
         Console.help();
+        continue;
+      }
+      if (input.equals("move")) {
+        Console.movable(this.board.movablePieces(), this.currentPlayer);
         continue;
       }
       if (input.equals("resign")) {

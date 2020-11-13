@@ -4,6 +4,8 @@ import chess.pieces.Piece;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Console {
 
@@ -22,6 +24,36 @@ public class Console {
     } else {
       System.out.println("Game over White won by resignation");
     }
+  }
+
+  static void movable(List<Piece> pieces, Player player) {
+    List<Piece> myPieces = pieces.stream()
+        .filter(piece -> piece.isWhite == player.isWhite)
+        .collect(Collectors.toList());
+
+    StringBuilder sb = new StringBuilder("-------------------------       Line\n");
+    for (int i = 11; i < 89; i++) {
+      if (Lists.newArrayList(19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80).contains(i)) {
+        continue;
+      }
+      sb.append(" ");
+      boolean found = false;
+      for (Piece p : myPieces) {
+        if (p.position == i) {
+          sb.append(p.isGone ? Symbol.EMPTY : p.symbol);
+          found = true;
+        }
+      }
+      if (!found) {
+        sb.append(Symbol.EMPTY);
+      }
+      if (Lists.newArrayList(18, 28, 38, 48, 58, 68, 78, 88).contains(i)) {
+        sb.append(i - 8).append("\n");
+      }
+    }
+    sb.append(
+        "  1   2   3   4   5   6   7   8\n                            Row\n-------------------------\n");
+    System.out.println(sb.toString());
   }
 
   static void won(Player player) {
@@ -79,7 +111,7 @@ public class Console {
         sb.append(Symbol.EMPTY);
       }
       if (Lists.newArrayList(18, 28, 38, 48, 58, 68, 78, 88).contains(i)) {
-        sb.append(i - 8 + "\n");
+        sb.append(i - 8).append("\n");
 
       }
     }

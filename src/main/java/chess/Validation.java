@@ -1,54 +1,44 @@
 package chess;
 
-import chess.pieces.King;
-import chess.pieces.Knight;
-import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
-import java.util.Arrays;
 import org.apache.commons.lang.math.NumberUtils;
 
 public class Validation {
 
   /**
-   *  This variables is used in {@code canMove()} method,
-   *  so the piece can go to the opponent piece's position only the "first" time,
-   *  but can not go further than it.
-   *
-   *  We can manage, "if the piece (you are trying to move) has encountered to opponent piece",
-   *  while searching the positions.
-   *
-   *  How it works:
-   *
-   *  if this {@code didEncounter} is false && the piece encounter to the opponent piece,
-   *   == you can move to the position. And {@code didEncounter} become true.
-   *
-   *  if this {@code didEncounter} is ture
-   *   == it means you've already encountered to the piece
-   *   == you can't go further
-   *   == so always return false at {@code canMove()} method.
-   *
-   *  ex)
-   *  {w->, , , , B,B}  : {@code didEncounter} false
-   *  {  , , , , w,B}   : {@code didEncounter} true
-   *
+   * This variables is used in {@code canMove()} method, so the piece can go to the opponent piece's
+   * position only the "first" time, but can not go further than it.
+   * <p>
+   * We can manage, "if the piece (you are trying to move) has encountered to opponent piece", while
+   * searching the positions.
+   * <p>
+   * How it works:
+   * <p>
+   * if this {@code didEncounter} is false && the piece encounter to the opponent piece, == you can
+   * move to the position. And {@code didEncounter} become true.
+   * <p>
+   * if this {@code didEncounter} is ture == it means you've already encountered to the piece == you
+   * can't go further == so always return false at {@code canMove()} method.
+   * <p>
+   * ex) {w->, , , , B,B}  : {@code didEncounter} false {  , , , , w,B}   : {@code didEncounter}
+   * true
    */
   boolean didEncounter = false;
+
   public void setDidEncounter(boolean didEncounter) {
     this.didEncounter = didEncounter;
   }
 
   /**
-   * Check if the piece can move at the {@code position}
-   *  by Validating the "Existing Piece ".
+   * Check if the piece can move at the {@code position} by Validating the "Existing Piece ".
+   * <p>
+   * If some piece {@code position} already exit, and the color is same -> false and the color is
+   * different -> true
    *
-   *  If some piece {@code position} already exit,
-   *   and the color is same -> false
-   *   and the color is different -> true
-   *
-   * @param myPiece is the piece that you want to move
-   * @param board is the board you are playing on now
+   * @param myPiece  is the piece that you want to move
+   * @param board    is the board you are playing on now
    * @param position is the location where you want to check if you can move. (Not added yet!)
    * @return
    */
@@ -56,7 +46,7 @@ public class Validation {
     Piece piece = board.chosen(position);
 
     //if the piece encountered to other piece before, you can't move further.
-    if (didEncounter){
+    if (didEncounter) {
       return false;
     }
 
@@ -67,10 +57,10 @@ public class Validation {
       if (piece.isWhite == myPiece.isWhite) {
         return false;
 
-      // if the piece belongs to the opponent, you can go only once (take it)
-      }else{
-          didEncounter = true; // Encountered to the piece
-          return true;
+        // if the piece belongs to the opponent, you can go only once (take it)
+      } else {
+        didEncounter = true; // Encountered to the piece
+        return true;
       }
     }
 
@@ -79,24 +69,23 @@ public class Validation {
   }
 
   /**
-   * Check if the piece can move at the {@code position}
-   *  by Validating the "Board Area".
-   *
-   *  If the {@code position} is not in the Board, return false.
+   * Check if the piece can move at the {@code position} by Validating the "Board Area".
+   * <p>
+   * If the {@code position} is not in the Board, return false.
    *
    * @param position is the location where you want to check if you can move.
    * @return
    */
   public boolean canMove(int position) {
 
-    int xAxis = position%10;
-    int yAxis = position/10%10;
+    int xAxis = position % 10;
+    int yAxis = position / 10 % 10;
 
     return xAxis >= 1 && xAxis <= 8 && yAxis >= 1 && yAxis <= 8;
   }
 
   public boolean playerCall(String input, Board board, boolean playersColor) {
-    if (Lists.newArrayList("help", "resign").contains(input)) {
+    if (Lists.newArrayList("help", "move", "resign").contains(input)) {
       return true;
     }
     if (!NumberUtils.isDigits(input)) {
