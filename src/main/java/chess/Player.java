@@ -39,6 +39,11 @@ public class Player {
 
   public int decide(ArrayList<Integer> positions) {
     String input = scan.nextLine();
+    // Quit command returns -2
+    if (input.equals("q")){
+      return -2;
+    }
+    // other invalid command returns -1
     if (!this.valid.playerDecide(input, positions)) {
       return -1;
     }
