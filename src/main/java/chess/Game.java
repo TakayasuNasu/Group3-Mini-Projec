@@ -18,10 +18,12 @@ public class Game {
 
   public void start() {
     Console.cellNumber();
+    Console.showBoard(this.board);
+    Console.playerTurn(this.currentPlayer);
+
+
     while (!this.isFinished) {
 
-      Console.showBoard(this.board);
-      Console.playerTurn(this.currentPlayer);
       Console.beforeCall();
 
       String input = this.currentPlayer.call();
@@ -77,6 +79,8 @@ public class Game {
       }
       Console.changePlayer(this.currentPlayer);
       this.currentPlayer = this.getNextPlayer();
+      Console.showBoard(this.board);
+      Console.playerTurn(this.currentPlayer);
     }
   }
 
