@@ -4,6 +4,7 @@ import chess.command.MacroMovement;
 import chess.command.Movement;
 import chess.pieces.Piece;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game {
 
@@ -15,6 +16,9 @@ public class Game {
   Player blackPlayer = new Player(board, false);
   Player currentPlayer = this.whitePlayer; //Default player
   boolean isFinished = false;
+  Scanner scan = new Scanner(System.in);
+  Validation valid = new Validation();
+  boolean isWhite;
 
   public void start() {
     Console.cellNumber();
@@ -77,8 +81,33 @@ public class Game {
       }
       Console.changePlayer(this.currentPlayer);
       this.currentPlayer = this.getNextPlayer();
+      if (this.board.observePawn()) {
+
+        //input = scan.nextLine();
+        if (!this.valid.playerCall(input, this.board, this.isWhite)) {
+          System.out.println("Your Pawn can promote. To which piece would you like to promote (Rook, Knight, Queen or Bishop?");
+          this.board.pawnPromotion(this.piece, "pawn");
+
+        }else{
+          System.out.println("error");
+
+        }
+        System.out.println(input);
+
+          //System.out.println("Your Pawn promote. To which piece would you like to promote (Rook, Knight, Queen or Bishop)?");
+        }
+        // this.currentPlayer.whichi piece wanna promote
+        // this.board.pawnP(
+      }
+//        boolean isPromoted=true;
+//        while(isPromoted){
+          //Console.promotion(this.board.pawnPromotion(this.piece, "pawn"), positions);
+          //Board.pawnPromotion(this.piece,"pawn", piece.position);
+//          break;
+//        }
+
     }
-  }
+
 
   private Player getNextPlayer() {
     return this.currentPlayer == this.whitePlayer ? this.blackPlayer : this.whitePlayer;

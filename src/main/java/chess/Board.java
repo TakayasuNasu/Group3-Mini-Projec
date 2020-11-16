@@ -8,9 +8,11 @@ import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import chess.pieces.Queen;
 import chess.pieces.Rook;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Board {
@@ -120,4 +122,82 @@ public class Board {
     }
   }
 
+  public boolean observePawn(){
+    for (Piece p: this.pieces) {
+      if (p.getClass().getSimpleName().equals("Pawn")){
+        if (Lists.newArrayList(11, 12, 13, 14, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80).contains(p.position)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public Piece pawnPromotion(Piece pawn, String piece) {
+
+      switch (piece) {
+        case "Queen":
+          if ("Queen".equals(pawn)) {
+            System.out.println("You have promoted to Queen");
+            pawn = new Queen(pawn.position, pawn.isWhite);
+          }
+          break;
+
+        case "Rook":
+          pawn = new Rook(pawn.position, pawn.isWhite);
+          if ("Rook".equals(pawn)) {
+            System.out.println("You have promoted to Rook");
+          }
+          break;
+
+        case "Knight":
+          pawn = new Knight(pawn.position, pawn.isWhite);
+          if ("Knight".equals(pawn)) {
+            System.out.println("You have promoted to Knight");
+          }
+          break;
+
+        case "Bishop":
+          pawn = new Bishop(pawn.position, pawn.isWhite);
+          if ("Bishop".equals(pawn)) {
+            System.out.println("You have promoted to Bishop");
+          }
+          break;
+
+
+
+    }
+
+   return pawn;
+
+
+
+
+    //      Scanner scan = new Scanner(System.in);
+//      piece = scan.nextLine();
+//    if (!pawn.getClass().getSimpleName().equals("Pawn")) {
+//      return pawn;
+//    }
+//    if (pawn.position <= 18 || pawn.position >= 81) {
+//        if(piece.equals("Queen")){
+//          System.out.println("You have promoted to Queen");
+//          pawn = new Queen(pawn.position, pawn.isWhite);
+//        }
+//      if(piece.equals("Rook")){
+//        pawn = new Rook(pawn.position, pawn.isWhite);
+//        System.out.println("You have promoted to Rook");
+//      }
+//      if(piece.equals("Bishop")){
+//        pawn = new Bishop(pawn.position, pawn.isWhite);
+//        System.out.println("You have promoted to Bishop");
+//      }
+//      if(piece.equals("Knight")){
+//        System.out.println("You have promoted to Knight");
+//        pawn = new Knight(pawn.position, pawn.isWhite);
+//
+//      }
+  }
+
+
 }
+
