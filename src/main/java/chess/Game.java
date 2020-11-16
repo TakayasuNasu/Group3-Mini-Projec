@@ -56,18 +56,18 @@ public class Game {
        * else -> move the piece to the selected position.
        */
       int dest = 0;
-      while(true) {
+      while (true) {
         Console.pieceAndPosition(this.piece, Integer.parseInt(input));
         Console.positions(positions);
         Console.positionsHelp(positions);
         dest = this.currentPlayer.decide(positions);
         if (dest == -1) {
           Console.error(2);
-        }else{
+        } else {
           break;
         }
       }
-      if (dest == -2){
+      if (dest == -2) {
         continue;
       }
 
@@ -75,42 +75,49 @@ public class Game {
       movement.setDestination(dest);
       this.currentPlayer.move(movement, dest);
       this.mm.push(movement);
-      if (this.board.getKing(this.getNextPlayer().isWhite).isGone) {
-        Console.won(this.currentPlayer);
-        break;
-      }
-      Console.changePlayer(this.currentPlayer);
-      this.currentPlayer = this.getNextPlayer();
-      if (this.board.observePawn()) {
 
-        //input = scan.nextLine();
-        if (!this.valid.playerCall(input, this.board, this.isWhite)) {
-          System.out.println("Your Pawn can promote. To which piece would you like to promote (Rook, Knight, Queen or Bishop?");
-          this.board.pawnPromotion(this.piece, "pawn");
-
-        }else{
-          System.out.println("error");
-
-        }
-        System.out.println(input);
-
-          //System.out.println("Your Pawn promote. To which piece would you like to promote (Rook, Knight, Queen or Bishop)?");
-        }
-        // this.currentPlayer.whichi piece wanna promote
-        // this.board.pawnP(
-      }
+      this.afterMove();
+      // this.currentPlayer.whichi piece wanna promote
+      // this.board.pawnP(
+    }
 //        boolean isPromoted=true;
 //        while(isPromoted){
-          //Console.promotion(this.board.pawnPromotion(this.piece, "pawn"), positions);
-          //Board.pawnPromotion(this.piece,"pawn", piece.position);
+    //Console.promotion(this.board.pawnPromotion(this.piece, "pawn"), positions);
+    //Board.pawnPromotion(this.piece,"pawn", piece.position);
 //          break;
 //        }
 
-    }
+  }
 
 
   private Player getNextPlayer() {
     return this.currentPlayer == this.whitePlayer ? this.blackPlayer : this.whitePlayer;
+  }
+
+  public void afterMove() {
+    if (this.board.getKing(this.getNextPlayer().isWhite).isGone) {
+      Console.won(this.currentPlayer);
+      this.isFinished = true;
+      return;
+    }
+    if (this.board.observePawn()) {
+      Console.canPromote();
+      boolean wrongInput = true;
+      String pieceName = "";
+      while (wrongInput) {
+        pieceName = this.currentPlayer.toPromote();
+        if (pieceName.equals("error")) {
+          Console.error(1);
+          Console.canPromote();
+          continue;
+        }
+        wrongInput = false;
+      }
+      Piece promotedPiece = this.board.pawnPromotion(this.piece, pieceName);
+      this.board.overRidePiece(promotedPiece);
+    }
+    Console.changePlayer(this.currentPlayer);
+    this.currentPlayer = this.getNextPlayer();
   }
 
 }

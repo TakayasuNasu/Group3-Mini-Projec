@@ -25,11 +25,8 @@ class BoardTest {
   @Test
   void promotion() {
     String queen = "Queen";
-    Pawn pawn = new Pawn(11);
-    Piece piece = this.board.pawnPromotion(pawn,queen);
-    System.out.println(pawn.symbol);
+    Piece piece = this.board.pawnPromotion(this.board.chosen(11), queen);
     Assertions.assertEquals("Queen", piece.getClass().getSimpleName());
-    System.out.println(piece.symbol);
   }
 
 }

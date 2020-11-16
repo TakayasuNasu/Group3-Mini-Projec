@@ -122,10 +122,11 @@ public class Board {
     }
   }
 
-  public boolean observePawn(){
-    for (Piece p: this.pieces) {
-      if (p.getClass().getSimpleName().equals("Pawn")){
-        if (Lists.newArrayList(11, 12, 13, 14, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80).contains(p.position)) {
+  public boolean observePawn() {
+    for (Piece p : this.pieces) {
+      if (p.getClass().getSimpleName().equals("Pawn")) {
+        if (Lists.newArrayList(11, 12, 13, 14, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80)
+            .contains(p.position)) {
           return true;
         }
       }
@@ -133,45 +134,35 @@ public class Board {
     return false;
   }
 
-  public Piece pawnPromotion(Piece pawn, String piece) {
-
-      switch (piece) {
-        case "Queen":
-          if ("Queen".equals(pawn)) {
-            System.out.println("You have promoted to Queen");
-            pawn = new Queen(pawn.position, pawn.isWhite);
-          }
-          break;
-
-        case "Rook":
-          pawn = new Rook(pawn.position, pawn.isWhite);
-          if ("Rook".equals(pawn)) {
-            System.out.println("You have promoted to Rook");
-          }
-          break;
-
-        case "Knight":
-          pawn = new Knight(pawn.position, pawn.isWhite);
-          if ("Knight".equals(pawn)) {
-            System.out.println("You have promoted to Knight");
-          }
-          break;
-
-        case "Bishop":
-          pawn = new Bishop(pawn.position, pawn.isWhite);
-          if ("Bishop".equals(pawn)) {
-            System.out.println("You have promoted to Bishop");
-          }
-          break;
-
-
-
+  public void overRidePiece(Piece piece) {
+    for (int i = 0; i < this.pieces.size(); i++) {
+      if (this.pieces.get(i).position == piece.position
+          && !this.pieces.get(i).isGone) {
+        this.pieces.set(i, piece);
+      }
     }
+  }
 
-   return pawn;
-
-
-
+  public Piece pawnPromotion(Piece pawn, String piece) {
+    switch (piece) {
+      case "Queen":
+        pawn = new Queen(pawn.position, pawn.isWhite);
+        Console.promoted("Queen");
+        break;
+      case "Rook":
+        pawn = new Rook(pawn.position, pawn.isWhite);
+        Console.promoted("Rook");
+        break;
+      case "Knight":
+        pawn = new Knight(pawn.position, pawn.isWhite);
+        Console.promoted("Knight");
+        break;
+      case "Bishop":
+        pawn = new Bishop(pawn.position, pawn.isWhite);
+        Console.promoted("Bishop");
+        break;
+    }
+    return pawn;
 
     //      Scanner scan = new Scanner(System.in);
 //      piece = scan.nextLine();
