@@ -11,10 +11,10 @@ public class Console {
 
   static void help() {
     System.out.println("* type 'help' for help");
-    System.out.println("* type 'board' to see the board again");
+    //System.out.println("* type 'board' to see the board again");
     System.out.println("* type 'resign' to resign");
-    System.out.println("* type 'moves' to list all possible moves");
-    System.out.println("* type 'square' (e.g. 21, 35, 44) to list possible moves for that square");
+    System.out.println("* type 'move' to list all possible moves");
+    //System.out.println("* type 'square' (e.g. 21, 35, 44) to list possible moves for that square");
     System.out.println("type 'UCI' (e.g. 33, 27,70) to make a move");
   }
 
