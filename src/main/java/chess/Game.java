@@ -4,7 +4,6 @@ import chess.command.MacroMovement;
 import chess.command.Movement;
 import chess.pieces.Piece;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Game {
 
@@ -16,16 +15,14 @@ public class Game {
   Player blackPlayer = new Player(board, false);
   Player currentPlayer = this.whitePlayer; //Default player
   boolean isFinished = false;
-  Scanner scan = new Scanner(System.in);
-  Validation valid = new Validation();
-  boolean isWhite;
 
   public void start() {
     Console.cellNumber();
+    Console.showBoard(this.board);
+    Console.playerTurn(this.currentPlayer);
+
     while (!this.isFinished) {
 
-      Console.showBoard(this.board);
-      Console.playerTurn(this.currentPlayer);
       Console.beforeCall();
 
       String input = this.currentPlayer.call();
@@ -75,9 +72,7 @@ public class Game {
       movement.setDestination(dest);
       this.currentPlayer.move(movement, dest);
       this.mm.push(movement);
-
       this.afterMove();
-
     }
 
   }
@@ -111,6 +106,8 @@ public class Game {
     }
     Console.changePlayer(this.currentPlayer);
     this.currentPlayer = this.getNextPlayer();
+    Console.showBoard(this.board);
+    Console.playerTurn(this.currentPlayer);
   }
 
 }

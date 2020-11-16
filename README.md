@@ -68,5 +68,14 @@ Class / Interface
 
 
 
+### UML diagram
+- chess pagackage
+![uml-chess](./images/uml-chess.png)
+
+- command pagackage
+![uml-chess](./images/uml-command.png)
+
+- pieces pagackage
+![uml-chess](./images/uml-pieces.png)
 
 
