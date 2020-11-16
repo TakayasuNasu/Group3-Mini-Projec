@@ -77,15 +77,8 @@ public class Game {
       this.mm.push(movement);
 
       this.afterMove();
-      // this.currentPlayer.whichi piece wanna promote
-      // this.board.pawnP(
+
     }
-//        boolean isPromoted=true;
-//        while(isPromoted){
-    //Console.promotion(this.board.pawnPromotion(this.piece, "pawn"), positions);
-    //Board.pawnPromotion(this.piece,"pawn", piece.position);
-//          break;
-//        }
 
   }
 

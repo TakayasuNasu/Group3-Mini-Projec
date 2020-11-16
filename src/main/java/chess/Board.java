@@ -125,7 +125,7 @@ public class Board {
   public boolean observePawn() {
     for (Piece p : this.pieces) {
       if (p.getClass().getSimpleName().equals("Pawn")) {
-        if (Lists.newArrayList(11, 12, 13, 14, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80)
+        if (Lists.newArrayList(11, 12, 13, 14, 15, 16, 17, 18, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88)
             .contains(p.position)) {
           return true;
         }
@@ -164,29 +164,7 @@ public class Board {
     }
     return pawn;
 
-    //      Scanner scan = new Scanner(System.in);
-//      piece = scan.nextLine();
-//    if (!pawn.getClass().getSimpleName().equals("Pawn")) {
-//      return pawn;
-//    }
-//    if (pawn.position <= 18 || pawn.position >= 81) {
-//        if(piece.equals("Queen")){
-//          System.out.println("You have promoted to Queen");
-//          pawn = new Queen(pawn.position, pawn.isWhite);
-//        }
-//      if(piece.equals("Rook")){
-//        pawn = new Rook(pawn.position, pawn.isWhite);
-//        System.out.println("You have promoted to Rook");
-//      }
-//      if(piece.equals("Bishop")){
-//        pawn = new Bishop(pawn.position, pawn.isWhite);
-//        System.out.println("You have promoted to Bishop");
-//      }
-//      if(piece.equals("Knight")){
-//        System.out.println("You have promoted to Knight");
-//        pawn = new Knight(pawn.position, pawn.isWhite);
-//
-//      }
+
   }
 
 
