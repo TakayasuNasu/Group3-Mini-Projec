@@ -2,6 +2,7 @@ package chess;
 
 import chess.command.Movement;
 import chess.pieces.Piece;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,9 +19,8 @@ public class Player {
   }
 
   /**
-   * Get the info of piece at {@code position} of current board.
-   * If there is no piece or, player's color and the piece's color is wrong
-   *  -> return null
+   * Get the info of piece at {@code position} of current board. If there is no piece or, player's
+   * color and the piece's color is wrong -> return null
    *
    * @param position that the player has selected
    * @return the info of piece, or null
@@ -40,7 +40,7 @@ public class Player {
   public int decide(ArrayList<Integer> positions) {
     String input = scan.nextLine();
     // Quit command returns -2
-    if (input.equals("q")){
+    if (input.equals("q")) {
       return -2;
     }
     // other invalid command returns -1
@@ -55,9 +55,17 @@ public class Player {
     Piece exitPiece = this.board.chosen(dest);
 
     //if the piece exited?  -> execute taken()
-    if (exitPiece != null){
+    if (exitPiece != null) {
       exitPiece.taken();
     }
     movement.run();
+  }
+
+  public String toPromote() {
+    String input = scan.nextLine();
+    if (!Lists.newArrayList("Queen", "Rook", "Knight", "Bishop").contains(input)) {
+      return "error";
+    }
+    return input;
   }
 }

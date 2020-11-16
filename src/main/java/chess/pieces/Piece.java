@@ -7,6 +7,7 @@ public abstract class Piece {
   public boolean isGone = false;
   public String symbol;
 
+
   public void taken(){
     this.isGone = true;
   }

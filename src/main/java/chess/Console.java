@@ -145,6 +145,15 @@ public class Console {
     System.out.printf("you moved %s and destination is %d\n", piece.symbol, position);
   }
 
+  static void canPromote() {
+    System.out.println(
+        "Your Pawn can promote. To which piece would you like to promote (Rook, Knight, Queen or Bishop?");
+  }
+
+  static void promoted(String piece) {
+    System.out.printf("You have promoted to %s \n", piece);
+  }
+
   static void error(int code) {
     switch (code) {
       case 1:

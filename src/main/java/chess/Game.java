@@ -21,7 +21,6 @@ public class Game {
     Console.showBoard(this.board);
     Console.playerTurn(this.currentPlayer);
 
-
     while (!this.isFinished) {
 
       Console.beforeCall();
@@ -54,18 +53,18 @@ public class Game {
        * else -> move the piece to the selected position.
        */
       int dest = 0;
-      while(true) {
+      while (true) {
         Console.pieceAndPosition(this.piece, Integer.parseInt(input));
         Console.positions(positions);
         Console.positionsHelp(positions);
         dest = this.currentPlayer.decide(positions);
         if (dest == -1) {
           Console.error(2);
-        }else{
+        } else {
           break;
         }
       }
-      if (dest == -2){
+      if (dest == -2) {
         continue;
       }
 
@@ -73,19 +72,42 @@ public class Game {
       movement.setDestination(dest);
       this.currentPlayer.move(movement, dest);
       this.mm.push(movement);
-      if (this.board.getKing(this.getNextPlayer().isWhite).isGone) {
-        Console.won(this.currentPlayer);
-        break;
-      }
-      Console.changePlayer(this.currentPlayer);
-      this.currentPlayer = this.getNextPlayer();
-      Console.showBoard(this.board);
-      Console.playerTurn(this.currentPlayer);
+      this.afterMove();
     }
+
   }
+
 
   private Player getNextPlayer() {
     return this.currentPlayer == this.whitePlayer ? this.blackPlayer : this.whitePlayer;
+  }
+
+  public void afterMove() {
+    if (this.board.getKing(this.getNextPlayer().isWhite).isGone) {
+      Console.won(this.currentPlayer);
+      this.isFinished = true;
+      return;
+    }
+    if (this.board.observePawn()) {
+      Console.canPromote();
+      boolean wrongInput = true;
+      String pieceName = "";
+      while (wrongInput) {
+        pieceName = this.currentPlayer.toPromote();
+        if (pieceName.equals("error")) {
+          Console.error(1);
+          Console.canPromote();
+          continue;
+        }
+        wrongInput = false;
+      }
+      Piece promotedPiece = this.board.pawnPromotion(this.piece, pieceName);
+      this.board.overRidePiece(promotedPiece);
+    }
+    Console.changePlayer(this.currentPlayer);
+    this.currentPlayer = this.getNextPlayer();
+    Console.showBoard(this.board);
+    Console.playerTurn(this.currentPlayer);
   }
 
 }

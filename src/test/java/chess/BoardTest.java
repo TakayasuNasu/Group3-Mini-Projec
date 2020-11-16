@@ -1,7 +1,7 @@
 package chess;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import chess.pieces.Piece;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,10 @@ class BoardTest {
   }
 
   @Test
-  void choosed() throws Exception {
-    this.board.chosen(3);
+  void promotion() {
+    String queen = "Queen";
+    Piece piece = this.board.pawnPromotion(this.board.chosen(11), queen);
+    Assertions.assertEquals("Queen", piece.getClass().getSimpleName());
   }
+
 }
