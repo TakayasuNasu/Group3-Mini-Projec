@@ -1,8 +1,5 @@
 package chess;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,11 +12,6 @@ class BoardTest {
   @BeforeEach
   void setUp() {
     this.board = new Board();
-  }
-
-  @Test
-  void choosed() throws Exception {
-    this.board.chosen(3);
   }
 
   @Test

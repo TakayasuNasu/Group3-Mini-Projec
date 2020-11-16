@@ -12,7 +12,6 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Board {
@@ -125,7 +124,9 @@ public class Board {
   public boolean observePawn() {
     for (Piece p : this.pieces) {
       if (p.getClass().getSimpleName().equals("Pawn")) {
-        if (Lists.newArrayList(11, 12, 13, 14, 15, 16, 17, 18, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88)
+        if (Lists
+            .newArrayList(11, 12, 13, 14, 15, 16, 17, 18, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80,
+                81, 82, 83, 84, 85, 86, 87, 88)
             .contains(p.position)) {
           return true;
         }
